@@ -1,0 +1,27 @@
+void main () {
+    char *p = "krishna";
+    char *q = (char *) malloc (sizeof (char) * (strlen (p) + 1));
+    strcpy (q, p);
+    printf ("%s", q);
+    getchar ();
+    free (q);
+    return 0;
+}
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void main() {
+    const char *p = "krishna";
+    char *q = (char *) calloc(strlen(p) + 1, sizeof(char));
+    strcpy(q, p);
+    printf("%s\n", q);
+    free(q);
+}
+
+

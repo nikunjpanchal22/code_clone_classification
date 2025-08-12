@@ -1,0 +1,28 @@
+[Microsoft.SqlServer.Server.SqlFunction (IsDeterministic = true, IsPrecise = true, DataAccess = DataAccessKind.None)] public static SqlBytes BinaryCompress (SqlBytes input) {
+    if (input.IsNull)
+        return SqlBytes.Null;
+    using (MemoryStream result = new MemoryStream ())
+    {
+        using (DeflateStream deflateStream = new DeflateStream (result, CompressionMode.Compress, true))
+        {
+            deflateStream.Write (input.Buffer, 0, input.Buffer.Length);
+            deflateStream.Flush ();
+            deflateStream.Close ();
+        } return new SqlBytes (result.ToArray ());
+    }
+}
+
+
+[Microsoft.SqlServer.Server.SqlFunction (IsDeterministic = true, IsPrecise = true, DataAccess = DataAccessKind.None)] public static SqlBytes BinaryCompress3 (SqlBytes input) {
+    if (input.IsNull)
+        return SqlBytes.Null;
+    using (MemoryStream result = new MemoryStream ())
+    {
+        using (BrotliStream brotliStream = new BrotliStream (result, CompressionMode.Compress, true))
+        {
+            brotliStream.Write (input.Buffer, 0, input.Buffer.Length);
+            brotliStream.Flush ();
+            brotliStream.Close ();
+        } return new SqlBytes (result.ToArray ());
+    }
+}

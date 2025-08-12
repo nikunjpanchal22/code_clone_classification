@@ -1,0 +1,36 @@
+int main () {
+    FILE *fin = fopen ("test.txt", "rt");
+    int newCount = getFileData (fin, SongList, globalCounter);
+    int counter = 0;
+    while (counter < newCount) {
+        printf ("%s, %s, %s", SongList [counter].title, SongList [counter].artist, SongList [counter].year);
+        counter++;
+    }
+}
+
+
+
+
+
+typedef struct {
+	  char title[256];
+	  char artist[256];
+	  char year[256];
+	} Song;
+	Song songList[100];
+
+	int main () {
+	  FILE *fin = fopen("test.txt", "rt");
+	  fseek(fin, 0, SEEK_END);
+	  int newCount = ftell(fin)/sizeof(Song);
+	  
+	  fseek(fin, 0, SEEK_SET);
+	  readFileData (fin, songList, newCount);
+	  
+	  for (int counter = 0; counter < newCount; counter++) {
+	    printf ("%s, %s, %s\n", songList[counter].title, songList[counter].artist, songList[counter].year);
+	  }
+	  fclose(fin);
+}
+
+

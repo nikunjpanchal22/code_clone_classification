@@ -1,0 +1,28 @@
+def recurse(left, right, threshold, features, node) :
+	if (threshold [node] ! = - 2) :
+		print "if ( " + features [node] + " <= " + str(threshold [node]) + " ) {"
+		if left [node] ! = - 1 :
+			recurse(left, right, threshold, features, left [node])
+		print "} else {"
+		if right [node] ! = - 1 :
+			recurse(left, right, threshold, features, right [node])
+		print "}"
+	else :
+		print "return " + str(value [node])
+
+
+
+
+def recurse(left, right, reference, markers, node) :
+	if (reference [node] ! = - 2) :
+		print "if ( " + markers [node] + " <= " + str(reference [node]) + " ) {"
+		if left [node] ! = - 1 :
+			recurse(left, right, reference, markers, left [node])
+		print "} else {"
+		if right [node] ! = - 1 :
+			recurse(left, right, reference, markers, right [node])
+		print "}"
+	else :
+		print "return " + str(value [node])
+
+

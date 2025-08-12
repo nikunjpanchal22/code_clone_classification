@@ -1,0 +1,51 @@
+public Message WrapA (int a, int millisecondsTimeout) {
+    int ? b;
+    int count = 0;
+    while ((b = Interlocked.Exchange (ref pendingB, EMPTY)) == EMPTY) {
+        if (count % 7 == 0) {
+            Thread.Sleep (0);
+        } else if (count % 23 == 0) {
+            Thread.Sleep (1);
+        } else {
+            Thread.Yield ();
+        }
+        if (++ count == 480) {
+            return new Message (a, null);
+        }
+    }
+    return new Message (a, b);
+}
+
+
+
+  public Message WrapA (int a, int millisecondsTimeout) {
+    int ? b;
+    int count = 0;
+    while ((b = Interlocked.Exchange (ref pendingB, EMPTY)) == EMPTY) {
+        if (count%7 == 0) {
+            try {
+                Thread.sleep(millisecondsTimeout);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        } else if (count % 23 == 0) {
+            try {
+                Thread.sleep(millisecondsTimeout);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        } else {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        if (++ count == 480) {
+            return new Message (a, null);
+        }
+    }
+    return new Message (a, b);
+}
+
+

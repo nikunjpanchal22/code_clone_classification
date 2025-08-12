@@ -1,0 +1,48 @@
+int main () {
+    int a;
+    int b;
+    char c;
+    do {
+        printf ("Would you like to play?\nPress 'Y' for 'Yes' or 'N' for 'No'\n");
+        scanf ("%c", & c);
+        if (c != 'Y' && c != 'y')
+            break;
+        printf ("Enter the two values you like to compare\n");
+        scanf (" %d %d", & a, & b);
+        if (!(a ^ b)) {
+            printf ("both are equal\n");
+            getchar ();
+        }
+        else {
+            printf ("both are not equal\n");
+            getchar ();
+        }
+    }
+    while (1);
+    printf ("Thanks for playing.");
+    getchar ();
+    return 0;
+}
+
+
+
+
+
+int main () {
+	    int a, b;
+	    char c = 'Y';
+	    while (c == 'Y' || c == 'y') {
+		printf ("Would you like to play?\nPress 'Y' for 'Yes' or 'N' for 'No'\n");
+		scanf (" %c", &c);
+		if (c != 'Y' && c != 'y')
+		    break;
+		printf ("Enter the two values you like to compare\n");
+		scanf (" %d %d", &a, &b);
+		printf ("%s\n", a == b ? "both are equal" : "both are not equal");
+	    }
+	    printf ("Thanks for playing.");
+	    getchar ();
+	    return 0;
+}
+
+

@@ -1,0 +1,29 @@
+public static void Main (string [] args) {
+    foreach (string path in args) {
+        if (File.Exists (path)) {
+            ProcessFile (path);
+        } else if (Directory.Exists (path)) {
+            ProcessDirectory (path);
+        } else {
+            Console.WriteLine ("{0} is not a valid file or directory.", path);
+        }
+    }
+}
+
+
+ public static void Main (string [] args) {
+    int count = 0;
+    while (count < args.Length) {
+        string path = args[count];
+        if (File.Exists (path)) {
+            ProcessFile (path);
+        } else if (Directory.Exists (path)) {
+            ProcessDirectory (path);
+        } else {
+            Console.WriteLine ("{0} is not a valid file or directory.", path);
+        }
+        count++;
+    }
+}
+
+

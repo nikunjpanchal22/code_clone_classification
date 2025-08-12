@@ -1,0 +1,38 @@
+int main () {
+    char z [10];
+    int a;
+    printf ("enter the no.");
+    scanf ("%d", & a);
+    printf ("the entered no. is:%d\n", a);
+    int i;
+    for (i = 0; i < a; i++) {
+        printf ("enter the letters:");
+        scanf ("%c", & z [i]);
+    }
+    printf ("the entered letters are:");
+    for (i = 0; i < a; i++) {
+        printf ("%c\n", z [i]);
+    }
+    return 0;
+}
+
+
+
+
+
+#include <stdio.h> 
+int main () { 
+    char z[10]; 
+    int a, i; 
+    puts("Insert the number: ");
+    scanf ("%d%*c", &a);
+    for(i=0; i<a; i++){ 
+        puts("Insert the alphabet : "); 
+        scanf("%c%*c", z+i); 
+    } 
+    for(i=0; i<a; i++) 
+        putchar(z[i]);
+    puts("\n");
+}
+
+

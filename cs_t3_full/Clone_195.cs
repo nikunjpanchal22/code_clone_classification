@@ -1,0 +1,31 @@
+void comboboxrefresh () {
+    cnn.Open ();
+    SqlCommand cmd = new SqlCommand ("SELECT EmployeeID,EmployeeFirstName,EmployeeLastName FROM Employees", cnn);
+    SqlDataReader dr = cmd.ExecuteReader ();
+    if (dr.HasRows) {
+        combobox1.ValueMember = "Id";
+        combobox1.DisplayMember = "FullName";
+        while (dr.Read ()) {
+            comboBox1.Items.Add (new {FullName = dr.GetString (1) + " " + dr.GetString (2), Id = dr.GetInt32 (0)});
+        }
+    }
+    cnn.Close ();
+}
+
+
+ void comboboxrefresh()
+{
+    cnn.Open();
+    SqlCommand cmd = new SqlCommand("SELECT EmployeeID,EmployeeFirstName,EmployeeLastName FROM Employees", cnn);
+    SqlDataReader dr = cmd.ExecuteReader();
+    if (dr.HasRows)
+    {
+        while (dr.Read())
+        {
+            combobox1.Items.Add(dr.GetInt32(0).ToString() + ":" + dr.GetString(1) + " " + dr.GetString(2));
+        }
+    }
+    cnn.Close();
+}
+
+

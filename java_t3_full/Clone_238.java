@@ -1,0 +1,42 @@
+public static void main (String [] args) {
+    List < String > list = new ArrayList < String > ();
+    Scanner stdin = new Scanner (System.in);
+    do {
+        System.out.println ("Current list is " + list);
+        System.out.println ("Add more? (y/n)");
+        if (stdin.next ().startsWith ("y")) {
+            System.out.println ("Enter : ");
+            list.add (stdin.next ());
+        } else {
+            break;
+        }
+    } while (true);
+    stdin.close ();
+    System.out.println ("List is " + list);
+    String [] arr = list.toArray (new String [0]);
+    System.out.println ("Array is " + Arrays.toString (arr));
+}
+
+
+ public static void main (String [] args) {
+    List < String > list = new ArrayList < String > ();
+    Scanner stdin = new Scanner (System.in);
+    boolean exit = false;
+    do {
+        System.out.println ("Current list is " + list);
+        System.out.println ("Add more? (y/n)");
+        String enumeration = stdin.next ();
+        if (enumeration.startsWith ("y")) {
+            System.out.println ("Enter : ");
+            list.add (stdin.next ());
+        } else {
+            exit = true;
+        }
+    } while(!exit);
+    stdin.close ();
+    System.out.println ("List is " + list);
+    String [] arr = list.toArray (new String [0]);
+    System.out.println ("Array is " + Arrays.toString (arr));
+}
+
+

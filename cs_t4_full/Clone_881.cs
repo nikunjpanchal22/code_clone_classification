@@ -1,0 +1,22 @@
+public void WriteXml (XmlWriter writer) {
+    using (MemoryStream ms = new MemoryStream ())
+    {
+        using (XmlWriter innerWriter = XmlWriter.Create (ms, new XmlWriterSettings {OmitXmlDeclaration = true}))
+        {
+            shipmentInfoSerializer.Serialize (innerWriter, this.Shipment);
+            innerWriter.Flush ();
+            writer.WriteCData (Encoding.UTF8.GetString (ms.ToArray ()));
+        }}
+}
+
+
+ public void WriteXml (XmlWriter writer) {
+    using (StreamWriter streamWriter = new StreamWriter(new MemoryStream(), Encoding.UTF8))
+    {
+        shipmentInfoSerializer.Serialize(streamWriter, this.shipment);
+        streamWriter.Flush();
+        writer.WriteCData(Encoding.UTF8.GetString((streamWriter.BaseStream as MemoryStream).ToArray()));
+    }
+}
+
+

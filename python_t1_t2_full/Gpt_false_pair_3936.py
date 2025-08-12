@@ -1,0 +1,36 @@
+def __init__(self, parent = None) :
+	super(Main, self).__init__(parent)
+	self.addButton = QtGui.QPushButton('button to add other widgets')
+	self.addButton.clicked.connect(self.addWidget)
+	self.scrollLayout = QtGui.QFormLayout()
+	self.scrollWidget = QtGui.QWidget()
+	self.scrollWidget.setLayout(self.scrollLayout)
+	self.scrollArea = QtGui.QScrollArea()
+	self.scrollArea.setWidgetResizable(True)
+	self.scrollArea.setWidget(self.scrollWidget)
+	self.mainLayout = QtGui.QVBoxLayout()
+	self.mainLayout.addWidget(self.addButton)
+	self.mainLayout.addWidget(self.scrollArea)
+	self.centralWidget = QtGui.QWidget()
+	self.centralWidget.setLayout(self.mainLayout)
+	self.setCentralWidget(self.centralWidget)
+
+
+
+
+def __init__(self, parent=None):
+	super(Main, self).__init__(parent)
+	self.entryPoint = QtGui.QPushButton("button to add other widgets")
+	self.entryPoint.clicked.connect(self.addWidget)
+	self.scrollGrid = QtGui.QFormLayout()
+	self.widgetContainer = QtGui.QWidget()
+	self.widgetContainer.setLayout(self.scrollGrid)
+	self.scrollPanel = QtGui.QScrollArea()
+	self.scrollPanel.setWidgetResizable(True)
+	self.scrollPanel.setWidget(self.widgetContainer)
+	self.bodyLayout = QtGui.QVBoxLayout()
+	self.bodyLayout.addWidget(self.entryPoint)
+	self.bodyLayout.addWidget(self.scrollPanel)
+	self.mainPanel = QtGui.QWidget()
+	self.mainPanel.setLayout(self.bodyLayout)
+	self.setCentralWidget(self.mainPanel)

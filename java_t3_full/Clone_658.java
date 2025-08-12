@@ -1,0 +1,35 @@
+public void run () {
+    try {
+        synchronized (lock) {
+            for (int i = 0;
+            i < 5; i ++) {
+                while (id != token % N) lock.wait ();
+                System.out.println (id + " " + i);
+                token ++;
+                lock.notifyAll ();
+            }
+        }
+    } catch (InterruptedException e) {
+        e.printStackTrace ();
+    }
+}
+
+
+  public void run () {int iterations;
+
+    try {
+        synchronized (lock) {
+            iterations = token + N * 5;
+            while (token < iterations) {
+                while (id != token % N) lock.wait ();
+                System.out.println (id + " " + token/N);
+                token ++;
+                lock.notifyAll ();
+            }
+        }
+    } catch (InterruptedException e) {
+        e.printStackTrace ();
+    }
+}
+
+

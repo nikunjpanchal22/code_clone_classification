@@ -1,0 +1,42 @@
+int main () {
+    double X [SIZE], Y [SIZE], incr = 0.0, h = PI / 100.0, sum = 0.0, trapz;
+    int i = 0, k = 0, j = 0;
+    for (i; i < SIZE; ++i) {
+        X[i] = incr;
+        incr += h;
+    }
+    for (k; k < SIZE; ++k) {
+        Y[k] = sin (X[k]);
+    }
+    for (j; j < SIZE; ++j) {
+        if (j == 0 || j == SIZE - 1)
+            sum += Y[j] / 2;
+        else
+            sum += Y[j];
+    }
+    trapz = sum * h;
+    printf ("Result: %f \n", trapz);
+    return 0;
+}
+
+
+
+int main () {
+    const int SIZE = 100;
+    double X[SIZE], Y[SIZE], h = 3.14159265/100., sum = 0.0, result;
+	int i, j;
+	 
+	for (i=0;i<SIZE;++i) {
+		X[i] = h * i;
+		Y[i] = sin(X[i]);
+		if (i == 0 || i == SIZE-1)
+			sum += Y[i]/2;
+		else 
+			sum += Y[i];
+	}
+	result = sum * h;
+	printf("Result: %f\n", result);
+	return 0;
+}
+
+

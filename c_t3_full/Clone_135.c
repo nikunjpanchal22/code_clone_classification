@@ -1,0 +1,23 @@
+int main () {
+    int i = 4;
+    for (; i; --i) {
+        pthread_t *tcb = malloc (sizeof (*tcb));
+        pthread_create (tcb, NULL, threadfunc, (void *) i);
+    }
+    sleep (40);
+    return 0;
+}
+
+
+ int main () {
+    int i = 4;
+    while (i > 0) {
+        pthread_t *tcb = (pthread_t *)malloc(sizeof *tcb);
+        pthread_create(tcb, NULL, threadfunc, (void *)i);
+        i--;
+    }
+    sleep(40);
+    return 0;
+}
+
+

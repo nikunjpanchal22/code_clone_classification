@@ -1,0 +1,32 @@
+public static void main (String [] args) {
+    Integer n = Integer.parseInt (args [0]);
+    Queue < Integer > q = new Queue < Integer > ();
+    while (! StdIn.isEmpty ()) {
+        q.enqueue (StdIn.readInt ());
+    }
+    while (q.size () > n) {
+        q.dequeue ();
+    }
+    StdOut.println (q.peek ().toString ());
+}
+
+
+ public static void main (String [] args) {
+    Integer n = Integer.parseInt (args [0]);
+    List<Integer> intlist = new ArrayList<Integer>();
+
+    while (System.in.available() > 0) 
+    {
+        intlist.add(System.in.read());
+    }
+
+    intlist.sort(null);
+
+    while (intlist.size() > n) 
+    {
+        intlist.remove(0);
+    }
+    System.out.println(intlist.get(0).toString());
+}
+
+

@@ -1,0 +1,62 @@
+public static void Main () {
+    string baseIP = "192.168.1.";
+    Console.WriteLine ("Pinging 255 destinations of D-class in {0}*", baseIP);
+    CreatePingers (255);
+    PingOptions po = new PingOptions (ttl, true);
+    System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding ();
+    byte [] data = enc.GetBytes ("abababababababababababababababab");
+    SpinWait wait = new SpinWait ();
+    int cnt = 1;
+    Stopwatch watch = Stopwatch.StartNew ();
+    foreach (Ping p in pingers) {
+        lock (@lock)
+        {
+            instances += 1;
+        } p.SendAsync (string.Concat (baseIP, cnt.ToString ()), timeOut, data, po);
+        cnt += 1;
+    }
+    while (instances > 0) {
+        wait.SpinOnce ();
+    }
+    watch.Stop ();
+    DestroyPingers ();
+    Console.WriteLine ("Finished in {0}. Found {1} active IP-addresses.", watch.Elapsed.ToString (), result);
+    Console.ReadKey ();
+}
+
+
+ public static void Main () {
+    string baseIP = "192.168.1.";
+    Console.WriteLine ("Pinging 255 destinations of D-class in {0}*", baseIP);
+    CreatePingers (255);
+    PingOptions po = new PingOptions (ttl, true);
+    System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding ();
+    byte [] data = enc.GetBytes ("abababababababababababababababab");
+    SpinLock spinLock = new SpinLock();
+    int cnt = 1;
+    Stopwatch watch = Stopwatch.StartNew ();
+    foreach (Ping p in pingers) {
+        bool lockTaken = false;
+        try
+        {
+            spinLock.Enter(ref lockTaken);
+            instances += 1;
+        }
+        finally
+        {
+            if (lockTaken) spinLock.Exit();
+        }
+        p.SendAsync (string.Concat (baseIP, cnt.ToString ()), timeOut, data, po);
+        cnt += 1;
+    }
+    while (instances > 0)
+    {
+        SpinWait.SpinUntil(() => instances == 0);
+    }
+    watch.Stop ();
+    DestroyPingers ();
+    Console.WriteLine ("Finished in {0}. Found {1} active IP-addresses.", watch.Elapsed.ToString (), result);
+    Console.ReadKey ();
+}
+
+

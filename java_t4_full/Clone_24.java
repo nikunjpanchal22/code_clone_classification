@@ -1,0 +1,34 @@
+Node reverse (Node n, Node p) {
+    if (n == null) return null;
+    if (n.next == null) {
+        n.next = p;
+        return n;
+    }
+    Node r = reverse (n.next, n);
+    n.next = p;
+    return r;
+}
+
+
+// Implementation 7
+Node reverse (Node n, Node p) {
+    if(n == null)
+        return null;
+    if(n.next == null) {
+        n.next = p;
+        return n;
+    }
+    Node curr, prev, next;
+    curr = n;
+    prev = null;
+    while (curr != null) {
+        next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+    n = prev;
+    return n;
+}
+
+

@@ -1,0 +1,22 @@
+public bool btnRemoveCategory_IsVisible (Office.IRibbonControl ctl) {
+    var item = ctl.Context as Inspector;
+    var mailItem = item.CurrentItem as MailItem;
+    if (item != null)
+        return (item != null && HasMyCategory (item));
+    else
+        return false;
+}
+
+
+ public bool btnRemoveCategory_IsVisible (Office.IRibbonControl ctl) {
+    var item = ctl.Context as Inspector;
+    var mailItem = item.CurrentItem as MailItem;
+    bool hasCategory = false;
+
+    if (item != null)
+        hasCategory = HasMyCategory(item);
+    
+    return item != null && hasCategory;
+}
+
+

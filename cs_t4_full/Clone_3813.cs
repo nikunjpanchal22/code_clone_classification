@@ -1,0 +1,40 @@
+public int RegisterMember (string memberName, string emailAddress, string memberPassword, string memberTypeAlias, string memberGroupName) {
+    int umbracoMemberId = - 1;
+    if (! MemberExists (emailAddress)) {
+        IMember newMember = ApplicationContext.Current.Services.MemberService.CreateMember (emailAddress, emailAddress, memberName, memberTypeAlias);
+        try {
+            ApplicationContext.Current.Services.MemberService.Save (newMember);
+            ApplicationContext.Current.Services.MemberService.SavePassword (newMember, memberPassword);
+            ApplicationContext.Current.Services.MemberService.AssignRole (newMember.Id, memberGroupName);
+            umbracoMemberId = newMember.Id;
+        }
+        catch (Exception ex) {
+            throw new Exception ("Unable to create new member " + ex.Message);
+        }
+    }
+    return umbracoMemberId;
+}
+
+
+
+public int RegisterMember(string memberName, string emailAddress, string memberPassword, string memberTypeAlias, string memberGroupName) {
+		   if (MemberExists(emailAddress)) {
+		       return -1;
+		   }
+		   return AddNewMember(memberName, emailAddress, memberPassword, memberTypeAlias, memberGroupName);
+		}
+		private int AddNewMember(string memberName, string emailAddress, string memberPassword, string memberTypeAlias, string memberGroupName) {
+		    IMember newMember ;
+		    try {
+			newMember = ApplicationContext.Current.Services.MemberService.CreateMember(emailAddress, emailAddress, memberName, memberTypeAlias);
+			ApplicationContext.Current.Services.MemberService.Save(newMember);
+			ApplicationContext.Current.Services.MemberService.SavePassword(newMember, memberPassword);
+			ApplicationContext.Current.Services.MemberService.AssignRole(newMember.Id, memberGroupName);
+		    }
+		    catch (Exception ex) {
+			throw new Exception("Error during registration", ex);
+		    }
+		    return newMember.Id;
+}
+
+

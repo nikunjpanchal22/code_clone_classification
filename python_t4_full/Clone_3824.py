@@ -1,0 +1,18 @@
+def num_subsequences(seq, sub) :
+	if not sub :
+		return 1
+	elif not seq :
+		return 0
+	result = num_subsequences(seq [1 :], sub)
+	if seq [0] == sub [0] :
+		result += num_subsequences(seq [1 :], sub [1 :])
+	return result
+
+
+import collections
+def num_subsequences(seq, sub):
+    seq, sub = collections.deque(seq), collections.deque(sub)
+    if not sub: return 1
+    if not seq: return 0
+
+

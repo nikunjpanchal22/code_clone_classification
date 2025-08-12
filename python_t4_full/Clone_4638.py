@@ -1,0 +1,18 @@
+def go(iterable) :
+	itr = iter(iterable)
+	try :
+		next(num for num in itr if num % 2 == 1)
+		return next(i for i, num in enumerate(itr, 1) if num % 2 == 0)
+	except StopIteration :
+		return - 1
+
+
+import itertools
+def go(iterable):
+    itr = iter(iterable)
+    next(num for num in itr if num % 2 == 1, None)
+    return next((i for i, num in enumerate(itr, 1) if num % 2 == 0), -1)
+
+
+
+

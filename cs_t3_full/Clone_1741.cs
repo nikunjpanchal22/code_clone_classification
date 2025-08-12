@@ -1,0 +1,33 @@
+private static void Main (string [] args) {
+    int threadCount = 2;
+    using (ThreadData data = new ThreadData (threadCount))
+    {
+        Thread [] threads = new Thread [threadCount];
+        for (int i = 0; i < threadCount; ++ i) {
+            threads [i] = new Thread (DoOperations);
+        }
+        foreach (Thread thread in threads) {
+            thread.Start (data);
+        }
+        Console.WriteLine ("Starting...");
+        data.RunDispatcher ();
+    } Console.WriteLine ("Shutdown.");
+}
+
+
+ private static void Main (string [] args) {
+    int threadCount = 5;
+    using (ThreadData data = new ThreadData (threadCount))
+    {
+        EventWaitHandle[] events = new EventWaitHandle [threadCount];
+        for (int i = 0; i < threadCount; ++ i) {
+            events [i] = new ManualResetEvent (false);
+            ThreadPool.QueueUserWorkItem (DoOperations, data);
+        }
+        Console.WriteLine ("Starting...");
+        WaitHandle.WaitAll (events);
+        data.RunDispatcher ();
+    } Console.WriteLine ("Shutdown.");
+}
+
+

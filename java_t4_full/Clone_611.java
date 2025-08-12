@@ -1,0 +1,40 @@
+public int read (char [] cbuf, int off, int len) throws IOException {
+    int read = super.read (cbuf, off, len);
+    if (read == - 1) {
+        return - 1;
+    }
+    int pos = off - 1;
+    for (int readPos = off;
+    readPos < off + read; readPos ++) {
+        if (read == '@') {
+            continue;
+        } else {
+            pos ++;
+        }
+        if (pos < readPos) {
+            cbuf [pos] = cbuf [readPos];
+        }
+    }
+    return pos - off + 1;
+}
+
+
+ public int read (char[] cbuf, int off, int len) throws IOException{
+    int read = super.read (cbuf, off, len);
+    if (read == -1) {
+        return -1;
+    }
+    
+    int pos = off; // start at the offset
+    
+    for (int readPos = off; readPos < off + read; readPos++) { // loop through the characters starting at offset
+        if (read != '@') { // if the character != @
+            cbuf[pos] = cbuf[readPos]; // assign the character to the location
+            pos++; // increment location
+        }
+    }
+    
+    return pos - off; // return the length of characters written
+}
+
+

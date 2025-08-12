@@ -1,0 +1,12 @@
+def sum_numbers(s) :
+  sum= 0 
+  for n in s.split():  
+    sum +=float(n) 
+  return sum
+
+
+ def sum_numbers(s):
+  summation = 0
+  for n in s.split():
+    summation = float(n) + summation
+  return summation

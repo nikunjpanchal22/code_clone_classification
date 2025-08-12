@@ -1,0 +1,31 @@
+public synchronized void run () {
+    if (! this.infinite) {
+        if (this.repeatCounter > 0) {
+            this.command.run ();
+            this.repeatCounter --;
+        } else {
+            this.control.cancel (false);
+        }
+    } else {
+        this.command.run ();
+    }
+}
+
+
+
+
+
+public synchronized void run () {
+    if (! this.inexhaustible) {
+        if (sequenceCounter > 0) {
+            operation.run();
+            sequenceCounter--;
+        } else {
+            operator.interrupt(false);
+        }
+    } else {
+        operation.run();
+    }
+}
+
+

@@ -1,0 +1,29 @@
+def __init__(self, t) :
+	self.i = Tkinter.PhotoImage(width = 100, height = 100)
+	colors = [[random.randint(0, 255) for i in range(0, 3)] for j in range(0, 10000)]
+	row = 0; col = 0
+	for color in colors :
+		self.i.put('#%02x%02x%02x' % tuple(color), (row, col))
+		col += 1
+		if col == 100 :
+			row += 1; col = 0
+	c = Tkinter.Canvas(t, width = 100, height = 100); c.pack()
+	c.create_image(0, 0, image = self.i, anchor = Tkinter.NW)
+
+
+
+
+
+def __init__(self, t):
+	self.i = Tkinter.PhotoImage(width=100, height=100)
+	self.colors = [[random.choice(range(256)) for _ in range(3)] for _ in range(10000)]
+	self.row, self.col = 0, 0
+	for color in self.colors:
+		self.i.put("#%02x%02x%02x" % tuple(color), (self.row, self.col))
+		self.col += 1
+		if self.col == 100:
+			self.row += 1; self.col = 0
+	self.c = Tkinter.Canvas(t, width=100, height=100)
+	self.c.pack()
+
+

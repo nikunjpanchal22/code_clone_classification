@@ -1,0 +1,30 @@
+int main (void) {
+    printf ("%+g\n", Ieee754SingleDigits2DoubleCheat ("110000101100010010000000000000000"));
+    printf ("%+g\n", Ieee754SingleDigits2DoubleNoCheat ("010000101100010010000000000000000"));
+    printf ("%+g\n", Ieee754SingleDigits2DoubleCheat ("000000000100000000000000000000000"));
+    printf ("%+g\n", Ieee754SingleDigits2DoubleNoCheat ("100000000100000000000000000000000"));
+    printf ("%+g\n", Ieee754SingleDigits2DoubleCheat ("000000000000000000000000000000000"));
+    printf ("%+g\n", Ieee754SingleDigits2DoubleNoCheat ("000000000000000000000000000000000"));
+    return 0;
+}
+
+
+ int main() {
+    double x1 = Ieee754SingleDigits2DoubleCheat("110000101100010010000000000000000");
+    double x2 = Ieee754SingleDigits2DoubleNoCheat("010000101100010010000000000000000");
+    double x3 = Ieee754SingleDigits2DoubleCheat("000000000100000000000000000000000");
+    double x4 = Ieee754SingleDigits2DoubleNoCheat("100000000100000000000000000000000");
+    double x5 = Ieee754SingleDigits2DoubleCheat("000000000000000000000000000000000");
+    double x6 = Ieee754SingleDigits2DoubleNoCheat("000000000000000000000000000000000");
+
+    printf("%+g\n", x1);
+    printf("%+g\n", x2);
+    printf("%+g\n", x3);
+    printf("%+g\n", x4);
+    printf("%+g\n", x5);
+    printf("%+g\n", x6);
+
+    return 0;
+}
+
+

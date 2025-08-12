@@ -1,0 +1,46 @@
+public static List < Int32 > LocateSubset (Byte [] superSet, Byte [] subSet) {
+    if ((superSet == null) || (subSet == null)) {
+        throw new ArgumentNullException ();
+    }
+    if ((superSet.Length < subSet.Length) || (superSet.Length == 0) || (subSet.Length == 0)) {
+        return new List < Int32 > ();
+    }
+    var result = new List < Int32 > ();
+    Int32 currentIndex = 0;
+    Int32 maxIndex = superSet.Length - subSet.Length;
+    while (currentIndex < maxIndex) {
+        Int32 matchCount = CountMatches (superSet, currentIndex, subSet);
+        if (matchCount == subSet.Length) {
+            result.Add (currentIndex);
+        }
+        currentIndex ++;
+        if (matchCount > 0) {
+            currentIndex += matchCount - 1;
+        }
+    }
+    return result;
+}
+
+
+public static List < Int32 > SearchSubset (Byte [] entireSet, Byte [] subset) {
+    if ((entireSet == null) || (subset == null)) {
+        throw new ArgumentNullException ();
+    }
+    if ((entireSet.Length < subset.Length) || (entireSet.Length == 0) || (subset.Length == 0)) {
+        return new List < Int32 > ();
+    }
+    var result = new List < Int32 > ();
+    Int32 currentPosition = 0;
+    Int32 maximumIndex = entireSet.Length - subset.Length;
+    while (currentPosition < maximumIndex) {
+        Int32 matchCount = CountMatches (entireSet, currentPosition, subset);
+        if (matchCount == subset.Length) {
+            result.Add (currentPosition);
+        }
+        currentPosition ++;
+        if (matchCount > 0) {
+            currentPosition += matchCount - 1;
+        }
+    }
+    return result;
+}

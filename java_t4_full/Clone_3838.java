@@ -1,0 +1,39 @@
+public void onRequestPermissionsResult (int requestCode,@NonNull
+String [] permissions,@NonNull
+int [] grantResults) {
+    int index = (requestCode>> 16) & 0xffff;
+    if (index != 0) {
+        index --;
+        String who = mPendingFragmentActivityResults.get (index);
+        mPendingFragmentActivityResults.remove (index);
+        if (who == null) {
+            Log.w (TAG, "Activity result delivered for unknown Fragment.");
+            return;
+        }
+        Fragment frag = mFragments.findFragmentByWho (who);
+        if (frag == null) {
+            Log.w (TAG, "Activity result no fragment exists for who: " + who);
+        } else {
+            frag.onRequestPermissionsResult (requestCode & 0xffff, permissions, grantResults);
+        }
+    }
+}
+
+
+
+public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    switch (requestCode) {
+        case MY_PERMISSIONS_REQUEST_LOCATION: {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, locationListener);
+                }
+            } else {
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+            return;
+        }
+    }
+}
+
+

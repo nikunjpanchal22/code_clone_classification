@@ -1,0 +1,43 @@
+int main (int argc, char *argv []) {
+    const char *str = "JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC";
+    char *strCpy;
+    char **split;
+    int num;
+    int i;
+    strCpy = malloc (strlen (str) * sizeof (*strCpy));
+    strcpy (strCpy, str);
+    split = str_split (strCpy, ',', &num);
+    if (split == NULL) {
+        puts ("str_split returned NULL");
+    }
+    else {
+        printf ("%i Results: \n", num);
+        for (i = 0; i < num; i++) {
+            puts (split [i]);
+        }
+    }
+    free (split);
+    free (strCpy);
+    return 0;
+}
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    char str[] = "JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC";
+    char *next_tok = str;
+    char *current_tok = NULL;
+    while((current_tok = strtok(next_tok, ","))) {
+        next_tok = NULL;
+        puts(current_tok);
+    }
+    return 0;
+}
+
+

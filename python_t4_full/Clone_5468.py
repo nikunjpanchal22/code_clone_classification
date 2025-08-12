@@ -1,0 +1,16 @@
+def summary(xs) :
+	for values in xs :
+		try :
+			x, y, z = values
+			print (x * x + y * y + z * z)
+		except ValueError :
+			print (0)
+
+
+
+
+def summary(xs):
+    for values in xs :
+        vals = list(map(lambda x: x*x, values))
+
+

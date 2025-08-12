@@ -1,0 +1,26 @@
+static String removeDuplicates (String s) {
+    StringBuilder noDupes = new StringBuilder ();
+    for (int i = 0;
+    i < s.length (); i ++) {
+        String si = s.substring (i, i + 1);
+        if (noDupes.indexOf (si) == - 1) {
+            noDupes.append (si);
+        }
+    }
+    return noDupes.toString ();
+}
+
+
+static String removeDuplicates1(String s) {
+    Set<Character> letterSet = new LinkedHashSet<>();
+    for (char c : s.toCharArray()) {
+        letterSet.add(c);
+    }
+    StringBuilder sb = new StringBuilder();
+    for (Character character : letterSet) {
+        sb.append(character);
+    }
+    return sb.toString();
+}
+
+

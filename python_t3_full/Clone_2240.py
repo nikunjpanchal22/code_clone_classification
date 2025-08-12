@@ -1,0 +1,23 @@
+def pascal(n) :
+	array = [None for y in range(n)]
+	row = [1]
+	array [0] = row
+	k = [0]
+	for x in range(max(n, 0) - 1) :
+		row = [l + r for l, r in zip(row + k, k + row)]
+		array [x + 1] = row
+	return array
+
+
+
+
+def pascal(n) :
+    array = [None for y in range(n)]
+    row = [1]
+    array [0] = row
+    for x in range(n - 1) :
+        row = [sum(t) for t in zip([0]+row, row+[0])]
+        array [x + 1] = row
+    return array
+
+

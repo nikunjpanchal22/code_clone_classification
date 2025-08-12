@@ -1,0 +1,55 @@
+public static int [] solution (String S, int [] P, int [] Q) {
+    int [] arr = new int [S.length ()];
+    for (int i = 0;
+    i < S.length (); i ++) {
+        switch (S.charAt (i)) {
+            case 'A' :
+                arr [i] = 1;
+                break;
+            case 'C' :
+                arr [i] = 2;
+                break;
+            case 'G' :
+                arr [i] = 3;
+                break;
+            case 'T' :
+                arr [i] = 4;
+                break;
+            default :
+                break;
+        }
+    }
+    segmentNode root = buildTree (arr, 0, S.length () - 1);
+    int [] result = new int [P.length];
+    for (int i = 0;
+    i < P.length; i ++) {
+        result [i] = getMin (root, P [i], Q [i]);
+    }
+    return result;
+}
+
+
+ public static int[] solution(String S, int[] P, int[] Q) {
+    int[] temp = new int[S.length()];
+    for (int i = 0; i < S.length(); i++) {
+        if (S.charAt(i) == 'A') {
+            temp[i] = 1;
+        } else if (S.charAt(i) == 'C') {
+            temp[i] = 2;
+        } else if (S.charAt(i) == 'G') {
+            temp[i] = 3;
+        } else if (S.charAt(i) == 'T') {
+            temp[i] = 4;
+        } else {
+            temp[i] = 0;
+        }
+    }
+    segmentNode root = buildTree(temp, 0, S.length() - 1);
+    int[] result = new int[P.length];
+    for (int i = 0; i < P.length; i++) {
+        result[i] = getMin(root, P[i], Q[i]);
+    }
+    return result;
+}
+
+

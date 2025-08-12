@@ -1,0 +1,19 @@
+def validate_ip(ip_str) :
+	reg = r"^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"
+	if re.match(reg, ip_str) :
+		return True
+	else :
+		return False
+
+
+
+import socket
+def validate_ip(ip_str):
+    try:
+        socket.inet_aton(ip_str)
+        return True
+    except socket.error:
+        return False
+
+
+

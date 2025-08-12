@@ -1,0 +1,28 @@
+int main (void) {
+    demo *ptr = fieldDefinitions;
+    demo *end = &fieldDefinitions[sizeof (fieldDefinitions) / sizeof (fieldDefinitions[0]) - 1];
+    do {
+        printf ("ptr: %p \n", (void *) ptr);
+        printf ("ptr: %d \n", ptr -> a);
+    }
+    while (ptr++ < end);
+    return 0;
+}
+
+
+ 
+pp
+int main() {
+    size_t fieldDefSize = sizeof(fieldDefinitions);
+    size_t demoSize = sizeof (fieldDefinitions[0]);
+    demo *ptr = fieldDefinitions;
+    demo *end = &fieldDefinitions[(fieldDefSize / demoSize) - 1];
+    while(ptr <= end){
+        printf("ptr: %p \n", (void *) ptr);
+        printf("ptr: %d \n", ptr->a);
+        ptr++;
+    }
+    return 0;
+}
+
+

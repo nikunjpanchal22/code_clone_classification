@@ -1,0 +1,22 @@
+def test2():
+    import json
+    import time
+
+
+def test2():
+    import json
+    import time
+
+    time_start = time.time()
+    data = []
+    with open("data.csv", "rb") as f:
+        rows = csv.reader(f)
+        for row in rows:
+            data.append(list(row))
+    all_point_sets = [Point(*xy) for xy in zip(*data)]
+    time_end = time.time()
+    print("total time: ", (time_end - time_start))
+
+
+
+

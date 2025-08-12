@@ -1,0 +1,16 @@
+def remove_user(self, user) :
+	if hasattr(user, "name") :
+		self.remove(user.name)
+	else :
+		self.remove(user)
+
+
+
+
+def remove_user(self, user) :
+    name = user.name if hasattr(user, "name") else user
+    self.remove(name)
+
+
+
+

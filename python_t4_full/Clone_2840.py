@@ -1,0 +1,22 @@
+def unique(list) :
+	s = {}
+	output = []
+	for x in list :
+		count = 1
+		if (s.has_key(x)) :
+			count = s [x] + 1
+		s [x] = count
+	for x in list :
+		count = s [x]
+		if (count > 0) :
+			s [x] = 0
+			output.append(x)
+	return output
+
+
+ def unique(list):
+    uniqueList = []
+    [uniqueList.append(i) for i in list if not uniqueList.count(i)]
+    return uniqueList
+
+

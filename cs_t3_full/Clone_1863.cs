@@ -1,0 +1,32 @@
+static void doubleNumber (int [] n) {
+    int carry = 0;
+    for (int i = 0; i < n.Length; i ++) {
+        n [i] <<= 1;
+        n [i] += carry;
+        if (n [i] >= 1000000000) {
+            carry = 1;
+            n [i] -= 1000000000;
+        } else {
+            carry = 0;
+        }
+    }
+}
+
+
+ static void doubleNumber (int [] n) {
+    int carry = 0;
+    int index = n.Length - 1;
+    while(index >= 0){
+        n[index] <<= 1;
+        n[index] += carry;
+        if (n[index] >= 1000000000) {
+            carry = 1;
+            n [index] -= 1000000000;
+        } else {
+            carry = 0;
+        }
+        index--;
+    }
+}
+
+

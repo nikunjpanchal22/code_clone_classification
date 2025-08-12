@@ -1,0 +1,30 @@
+int main (void) {
+    {
+        char *tmp;
+        char *b = "0101";
+        printf ("%d\n", strtol (b, & tmp, 2));
+    }
+    {
+        printf ("%s\n", byte_to_binary (5));
+    }
+    return 0;
+}
+
+
+int main (void) {
+    char *tmp;
+    char *b = "1000";
+    printf ("%d\n", strtol (b, & tmp, 2));
+
+    int result = 0, base = 1; 
+    for (int i = strlen(b) - 1; i >= 0; i--) { 
+        if (b[i] == '1') 
+            result += base; 
+        base *= 2; 
+    } 
+
+    printf("%d\n", result);
+    return 0;
+}
+
+

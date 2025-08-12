@@ -1,0 +1,32 @@
+def __init__(self, * args, ** kwargs) :
+	super(MainFrame, self).__init__(None, * args, ** kwargs)
+	self.Title = 'Basic wxPython module'
+	self.SetMenuBar(MenuBar(self))
+	self.ToolBar = MainToolbar(self)
+	self.status_bar = StatusBar(self).status_bar
+	self.Bind(wx.EVT_CLOSE, self.on_quit_click)
+	panel = MainPanel(self)
+	sizer = wx.BoxSizer()
+	sizer.Add(panel)
+	self.SetSizerAndFit(sizer)
+	self.Centre()
+	self.Show()
+
+
+    hello_sizer = wx.BoxSizer()
+    hello_sizer.Add(hello_panel)
+    self.SetSizerAndFit(hello_sizer)
+    self.Centre()
+    self.Show()
+
+
+
+
+def __init__(self, * args, ** kwargs) :
+    super().__init__(None, * args, ** kwargs)
+    self.Title = 'Welcome App'
+    self.SetMenuBar(HelloAppMenuBar(self))
+    self.AppToolbar = Toolbar(self)
+    self.statusbar_my_app = MyStatusBar(self).status_bar
+
+

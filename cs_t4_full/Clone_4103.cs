@@ -1,0 +1,33 @@
+public static void ReplaceTextInWordDoc (Object findMe, Object replaceMe, ApplicationClass app) {
+    object replaceAll = Word.WdReplace.wdReplaceAll;
+    object missing = System.Reflection.Missing.Value;
+    app.Application.Selection.Find.ClearFormatting ();
+    app.Application.Selection.Find.Text = (string) findMe;
+    app.Application.Selection.Find.Replacement.ClearFormatting ();
+    if (replaceMe.ToString ().Length < 256) {
+        app.Application.Selection.Find.Replacement.Text = (string) replaceMe;
+        app.Application.Selection.Find.Execute (ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref replaceAll, ref missing, ref missing, ref missing, ref missing);
+    } else {
+        while (app.Application.Selection.Find.Execute (ref findMe, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing)) {
+            app.Application.Selection.Text = (string) replaceMe;
+            app.Application.Selection.Collapse ();
+        }
+    }
+}
+
+
+ public static void ReplaceTextInWordDoc (Object findMe, Object replaceMe, ApplicationClass app) {
+    app.Application.Selection.Find.ClearFormatting ();
+    var document = app.Documents.Open((string)findMe);
+    app.Application.Selection.Find.Replacement.ClearFormatting ();
+    foreach (Range range in document.Words)
+    {
+        if (range.Text == findMe.ToString())
+        {
+            range.Text = (string)replaceMe;
+        }
+    }
+    document.Close();
+}
+
+

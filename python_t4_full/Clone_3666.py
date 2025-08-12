@@ -1,0 +1,29 @@
+def binary_search(a, key, imin = 0, imax = None) :
+	if imax is None :
+		imax = len(a) - 1
+	while imin < = imax :
+		mid = (imin + imax) / / 2
+		midval = a [mid]
+		if midval < key :
+			imin = mid + 1
+		elif midval > key :
+			imax = mid - 1
+		else :
+			return mid
+	raise ValueError
+
+
+
+
+def binary_search(a, key, low = 0, high = None):
+    if high is None: high = len(a)-1
+    while low <= high:
+        mid = (low + high) // 2
+        if key < a[mid]:
+            high = mid - 1
+        elif key > a[mid]:
+            low = mid + 1
+        else:
+            return mid
+
+

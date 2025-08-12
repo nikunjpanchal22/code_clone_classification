@@ -1,0 +1,24 @@
+int main () {
+    int i = 0, N, sum = 0;
+    scanf ("%d", & N);
+    int ar [N];
+    for (i = 0; i < N; i++) {
+        scanf ("%d", & ar [i]);
+        sum = sum + ar[i];
+    }
+    printf ("%d\n", sum);
+    return 0;
+}
+
+
+int main () {
+    int i = 0, N, sum = 0;
+    scanf ("%d",  &N);
+    int ar1 [N];
+    for (i = 0; i < N; i++) {
+        scanf ("%d", &ar1 [i]);
+        sum += ar1 [i];
+    }
+    printf ("%d\n", sum);
+    return 0;
+}

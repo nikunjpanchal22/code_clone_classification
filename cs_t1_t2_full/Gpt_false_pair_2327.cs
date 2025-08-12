@@ -1,0 +1,92 @@
+private void PopulateBlock (RichTextBlock Blocker) {
+    bool firstItem = true;
+    int firstLength = 0;
+    Paragraph paraItem = null;
+    Run itemRun = null;
+    string CurrentIsle = "None";
+    foreach (Grocery j in Grocs) {
+        if (j.Isle != CurrentIsle) {
+            if ((CurrentIsle != "None") && (! firstItem)) {
+                paraItem.Inlines.Add (itemRun);
+                Blocker.Blocks.Add (paraItem);
+            }
+            CurrentIsle = j.Isle;
+            firstItem = true;
+            Paragraph paraIsle = new Paragraph ();
+            Run paraRan = new Run ();
+            paraRan.Text = "     " + j.Isle;
+            paraIsle.Inlines.Add (paraRan);
+            Blocker.Blocks.Add (paraIsle);
+        }
+        if (firstItem) {
+            paraItem = new Paragraph ();
+            itemRun = new Run ();
+            itemRun.Text = "        [] " + j.Item;
+            firstLength = j.Item.Length;
+            firstItem = false;
+        } else {
+            firstItem = true;
+            string s = new string (' ', 30 - firstLength);
+            itemRun.Text += s + "[] " + j.Item;
+            paraItem.Inlines.Add (itemRun);
+            Blocker.Blocks.Add (paraItem);
+        }
+    }
+    if (! firstItem) {
+        paraItem.Inlines.Add (itemRun);
+        Blocker.Blocks.Add (paraItem);
+    }
+}
+
+
+  private void PopulateBlock(RichTextBlock Blocker)
+    {
+        string CurrentIsle = "None";
+        bool firstItem = true;
+        int firstLength = 0;
+        Paragraph paraItem = null;
+        Run itemRun = null;
+
+        foreach (Grocery j in Grocs)
+        {
+            if (j.Isle != CurrentIsle)
+            {
+                if ((CurrentIsle != "None") && (firstItem == false))
+                {
+                    paraItem.Inlines.Add(itemRun);
+                    Blocker.Blocks.Add(paraItem);
+                }
+
+                CurrentIsle = j.Isle;
+                Paragraph paraIsle = new Paragraph();
+                Run paraRan = new Run();
+                paraRan.Text = "     " + j.Isle;
+                paraIsle.Inlines.Add(paraRan);
+                Blocker.Blocks.Add(paraIsle);
+                firstItem = true;
+            }
+
+            if (firstItem == true)
+            {
+                paraItem = new Paragraph();
+                itemRun = new Run();
+                itemRun.Text = "        [] " + j.Item;
+                firstLength = j.Item.Length;
+                firstItem = false;
+            }
+            else
+            {
+                firstItem = true;
+                string str = new string(' ', 30 - firstLength);
+                itemRun.Text += str + "[] " + j.Item;
+                paraItem.Inlines.Add(itemRun);
+                Blocker.Blocks.Add(paraItem);
+            }
+        }
+
+        if (firstItem == false)
+        {
+            paraItem.Inlines.Add(itemRun);
+            Blocker.Blocks.Add(paraItem);
+        }
+}

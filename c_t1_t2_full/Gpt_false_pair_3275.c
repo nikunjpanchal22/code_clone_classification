@@ -1,0 +1,30 @@
+int main () {
+    ofstream outdata;
+    int i;
+    int array [5] = {4, 3, 6, 7, 12};
+    outdata.open ("example.dat");
+    if (!outdata) {
+        cerr << "Error: file could not be opened" << endl;
+        exit (1);
+    }
+    for (i = 0; i < 5; ++i)
+        outdata << array[i] << endl;
+    outdata.close ();
+    return 0;
+}
+
+
+int main () {
+    ofstream outdata;
+    int i;
+    int array [5] = {4, 3, 6, 7, 12};
+    outdata.open ("example.dat");
+    if (!outdata) {
+        cerr << "Error: unable to open file" << endl;
+        exit (1);
+    }
+    for (i = 0; i < 5; ++i)
+        outdata << array[i] << "\n";
+    outdata.close ();
+    return 0;
+}

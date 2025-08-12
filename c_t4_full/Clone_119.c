@@ -1,0 +1,32 @@
+int main (void) {
+    int index;
+    char wordToPrint [SIZE];
+    printf ("please enter a random word:\n");
+    for (index = 0; index < SIZE; index++) {
+        scanf ("%c", & wordToPrint [index]);
+    }
+    int len = strlen (wordToPrint);
+    for (index = 0; index < SIZE; index++) {
+        --len;
+        printf ("%c", wordToPrint [len - 1]);
+    }
+    return 0;
+}
+
+
+ int main (void) { 
+    char wordToPrint [SIZE];
+    printf ("please enter a random word:\n");
+    scanf ("%s", wordToPrint); 
+    int len = strlen (wordToPrint);
+    char tmp[len], reversedString[len];
+    int i, j;
+    for (i = 0, j = len - 1; i < len; i++, j--){
+        tmp[j] = wordToPrint[i];
+    }
+    strcpy(reversedString,tmp);
+    printf("%s", reversedString);
+    return 0;
+}
+
+

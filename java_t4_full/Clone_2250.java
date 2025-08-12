@@ -1,0 +1,25 @@
+private void expandAllNodes (JTree tree) {
+    int j = tree.getRowCount ();
+    int i = 0;
+    while (i < j) {
+        tree.expandRow (i);
+        i += 1;
+        j = tree.getRowCount ();
+    }
+}
+
+
+ private void expandAllNodes (JTree tree) {
+    Stack<TreePath> stack = new Stack<>();
+    stack.push(tree.getPathForRow(0));
+ 
+    while (!stack.isEmpty()) {
+        TreePath path = stack.pop();
+        tree.expandPath(path);
+        for (int row = 0; row < tree.getRowCount (path); row++) {
+            stack.push(tree.getPathForRow(row));
+        }
+    }
+}
+
+

@@ -1,0 +1,32 @@
+public void start (Stage primaryStage) {
+    final HTMLEditor htmlEditor = new HTMLEditor ();
+    primaryStage.setScene (new Scene (htmlEditor));
+    primaryStage.show ();
+    for (Node toolBar = htmlEditor.lookup (".tool-bar");
+    toolBar != null; toolBar = htmlEditor.lookup (".tool-bar")) {
+        ((Pane) toolBar.getParent ()).getChildren ().remove (toolBar);
+    }
+}
+
+
+
+
+public void start(Stage primaryStage) {
+    final HTMLEditor htmlEditor = getHtmlEditor();
+    primaryStage.setScene(new Scene(htmlEditor));
+    primaryStage.show ();
+    removeToolbars(htmlEditor);
+    }
+
+    private HTMLEditor getHtmlEditor() {
+    return new HTMLEditor();
+    }
+
+    private void removeToolbars(HTMLEditor htmlEditor) {
+    for (Node toolBar = htmlEditor.lookup(".tool-bar"); toolBar != null; 
+        toolBar = htmlEditor.lookup(".tool-bar")) {
+        ((Pane) toolBar.getParent ()).getChildren ().remove (toolBar);
+    }
+}
+
+

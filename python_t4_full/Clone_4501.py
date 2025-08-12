@@ -1,0 +1,36 @@
+def merge(left, right, compare) :
+	result = []
+	i, j = 0, 0
+	while i < len(left) and j < len(right) :
+		if compare(left [i], right [j]) :
+			result.append(left [i])
+			i += 1
+		else :
+			result.append(right [j])
+			j += 1
+	while i < len(left) :
+		result.append(left [i])
+		i += 1
+	while j < len(right) :
+		result.append(right [j])
+		j += 1
+	return result
+
+
+		result.append(left.pop(0))
+	while right:
+		result.append(right.pop(0))
+	return result
+
+
+
+
+def merge(left, right, compare):
+	i = j = 0
+	result = []
+	while i < len(left) and j < len(right):
+		if compare(left[i], right[j]):
+			result += [left[i]]
+			i += 1
+
+

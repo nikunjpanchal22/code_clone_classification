@@ -1,0 +1,18 @@
+def __getitem__(self, item) :
+	if isinstance(item, slice) :
+		if item.step is None :
+			return list(range(item.start, item.stop))
+		return list(range(item.start, item.stop, item.step))
+
+
+ def __getitem__(self, item):
+       if isinstance(item, slice):
+           start = item.start
+           stop = item.stop
+           if item.stop is None:
+               step = 1
+           else:
+               step = item.step
+           return list(range(start, stop, step))
+
+

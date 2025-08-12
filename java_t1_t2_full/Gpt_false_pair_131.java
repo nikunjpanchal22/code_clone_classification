@@ -1,0 +1,45 @@
+public int maxBlock (String str) {
+    int max = 0;
+    int count = 1;
+    char o = ' ';
+    for (int i = 0;
+    i < str.length (); i ++) {
+        char c = str.charAt (i);
+        if (c == o) {
+            count ++;
+            if (count > max) {
+                max = count;
+            }
+        } else {
+            count = 1;
+            if (count > max) {
+                max = count;
+            }
+        }
+        o = c;
+    }
+    return max;
+}
+
+
+ public int maxBlock (String str) {
+int biggestBlock = 0;
+    int number = 1;
+    char past = ' ';
+    for (int x = 0; x < str.length(); x++) {
+        char present = str.charAt(x);
+        if (past == present) {
+            number ++; 
+            if (number > biggestBlock) {
+                biggestBlock = number;
+            }
+        } else {
+            number = 1; 
+            if (number > biggestBlock) {
+                biggestBlock = number;
+            }
+        }
+        past = present;
+    }
+    return biggestBlock;
+}

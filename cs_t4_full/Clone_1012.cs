@@ -1,0 +1,23 @@
+private void button1_Click (object sender, EventArgs e) {
+    textBox2.Clear ();
+    float result;
+    if (float.TryParse (textBox1.Text, out result)) {
+        textBox2.AppendText (Math.Sin (result).ToString ());
+    } else {
+        textBox2.Text = "Invalid Input";
+    }
+}
+
+
+  private void button1_Click (object sender, EventArgs e) {
+    textBox2.Clear ();
+    double result;
+    if (double.TryParse (textBox1.Text, out result)) {
+        result = Math.Sin (result);
+        textBox2.Text += result.ToString ("N3");
+    } else {
+        textBox2.Text = "Invalid Input";
+    }
+}
+
+

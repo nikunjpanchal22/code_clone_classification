@@ -1,0 +1,29 @@
+int main (void) {
+    int start;
+    if (scanf ("%d", &start) != 1)
+        exit (1);
+    int end = start;
+    while (scanf ("%d", &end) == 1)
+        ;
+    for (int i = start; i <= end; i++)
+        printf ("%d\n", i);
+}
+
+
+
+ 
+
+
+int main () {
+    int start;
+    if ((start = getchar() - '0') < 0)
+        return 1;
+    int end = start, tmp;
+    while ((tmp = getchar() - '0') >= 0)
+        end = tmp;
+    for (int i = start; i <= end; i++)
+        printf ("%d\n", i);
+    return 0;
+}
+
+

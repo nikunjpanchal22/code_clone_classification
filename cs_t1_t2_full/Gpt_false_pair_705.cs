@@ -1,0 +1,26 @@
+[TestMethod] public void TestGetCurrentFloor () {
+    var elevator = new Elevator (Elevator.Environment.Offline);
+    elevator.ElevatorArrivedOnFloor += TestElevatorArrived;
+    lock (this)
+    {
+        elevator.GoToFloor (5);
+        if (! Monitor.Wait (this, TIMEOUT))
+            Assert.Fail ("Event did not arrive in time.");
+    } int floor = elevator.GetCurrentFloor ();
+    Assert.AreEqual (floor, 5);
+}
+
+
+  [TestMethod] public void TestAcquireCurrentFloor()
+{
+     var elevator = new Elevator(Elevator.Environment.Offline);
+     elevator.ElevatorArrivedOnFloor += TestElevatorArrived;
+     lock (this)
+     {
+        elevator.GoToFloor(5);
+        if (!Monitor.Wait(this, TIMEOUT))
+            Assert.Fail("Event failed to happen.");
+     } 
+     int floor = elevator.GetCurrentFloor();
+     Assert.AreEqual(floor, 5);
+}

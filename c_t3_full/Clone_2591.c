@@ -1,0 +1,45 @@
+int main () {
+    const char *key1 = "keynumber1";
+    uint32_t match = jenkins_one_at_a_time_hash (key1, strlen (key1));
+    printf ("Target 0x%lX\n", (unsigned long) match);
+    uint32_t i = 0;
+    do {
+        uint32_t hash = jenkins_one_at_a_time_hash (&i, sizeof i);
+        if (hash == match) {
+            printf ("0x%lX: 0x%lX\n", (unsigned long) i, (unsigned long) hash);
+            fflush (stdout);
+        }
+    }
+    while (++i);
+    const char *key2 = "\x3C\xA0\x94\xB9";
+    uint32_t match2 = jenkins_one_at_a_time_hash (key2, strlen (key2));
+    printf ("Match 0x%lX\n", (unsigned long) match2);
+}
+
+
+
+
+
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+
+extern uint32_t jenkins_one_at_a_time_hash(const char *key, size_t length);
+
+int main () {
+    const char *key1 = "keynumber1";
+    uint32_t match = jenkins_one_at_a_time_hash (key1, strlen (key1));
+    printf ("Target 0x%lX\n", (unsigned long) match);
+    for (uint32_t i = 0; i; ++i) {
+        uint32_t hash = jenkins_one_at_a_time_hash ((char*)&i, sizeof i);
+        if (hash == match) {
+            printf ("0x%lX: 0x%lX\n", (unsigned long) i, (unsigned long) hash);
+            fflush (stdout);
+        }
+    }
+    const char *key2 = "\x3C\xA0\x94\xB9";
+    uint32_t match2 = jenkins_one_at_a_time_hash (key2, strlen (key2));
+    printf ("Match 0x%lX\n", (unsigned long) match2);
+}
+
+

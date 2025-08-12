@@ -1,0 +1,42 @@
+def time_overlap_projected_graph_parallel(B, nodes) :
+	G = nx.MultiGraph()
+	G.add_nodes_from((n, B.node [n]) for n in nodes)
+	cells = [n for n in B.nodes() if n [0] not in nodes]
+	for cell in cells :
+		for u, v in combinations(B [cell], 2) :
+			for uspell in B.get_edge_data(u, cell).values() :
+				ustart = uspell [1]
+				uend = uspell [2]
+				for vspell in B.get_edge_data(v, cell).values() :
+					vstart = vspell [1]
+					vend = vspell [2]
+					if uend > vstart and vend > ustart :
+						ostart = max(ustart, vstart)
+						oend = min(uend, vend)
+						olen = (oend - ostart + 1) / 86400
+						ocell = cell
+						if (v not in G [u] or ostart not in [edict [1] for edict in G [u] [v].values()]) :
+							G.add_edge(u, v, {0 : olen, 1 : ostart, 2 : oend, 3 : ocell})
+	return G
+
+
+
+
+def time_overlap_projected_graph_parallel(B, nodes) :
+	G = nx.MultiGraph()
+	G.add_nodes_from((node, B.node[node]) for node in nodes)
+	remaining_nodes = [node for node in B.nodes() if node[0] not in nodes]
+	for cell in remaining_nodes:
+		for u, v in combinations(B[cell], 2) :
+			for uspell in B.get_edge_data(u, cell).values() :
+				ustart, uend = uspell[1], uspell[2]
+				for vspell in B.get_edge_data(v, cell).values() :
+					vstart, vend = vspell[1], vspell[2]
+					if uend > vstart and vend > ustart :
+						ostart, oend = max(ustart, vstart), min(uend, vend)
+						olen, ocell = (oend - ostart + 1) / 86400, cell
+						if (v not in G[u] or ostart not in [value_dict[1] for value_dict in G[u][v].values()]) :
+							G.add_edge(u, v, {0: olen, 1: ostart, 2: oend, 3: ocell})
+	return G
+
+

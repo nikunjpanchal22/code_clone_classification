@@ -1,0 +1,37 @@
+void main () {
+    fp = fopen ("26.txt", "r");
+    char buffer [128];
+    int a [100];
+    int i = 0;
+    freopen ("26.txt", "r", stdin);
+    while (scanf ("%i", &a[i]) == 1 && buffer[i] != EOF)
+        ++i;
+    for (int j = 0; j < i; ++j)
+        printf ("[%i]: %i\n", j, a[j]);
+    fclose (stdin);
+}
+
+
+ 
+void main () {
+    int a [100], i = 0;
+    FILE *fp;   
+    char* buf; 
+    
+    fp = fopen ("26.txt", "r"); 
+    if (fp == NULL) { 
+        printf("Could not open file"); 
+        return 0; 
+    } 
+  
+    buf = (char *)malloc(128 * sizeof(char));
+    while (fgets(buf, 128, fp) != NULL) 
+        a[i++] = atoi(buf);
+    free(buf);  
+    
+    for (int j = 0; j < i; ++j) 
+        printf ("[%i]: %i\n", j, a[j]); 
+    fclose(fp);
+}
+
+

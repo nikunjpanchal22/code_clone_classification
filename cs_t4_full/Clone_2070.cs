@@ -1,0 +1,31 @@
+private string DoSomething () {
+    int max = 10;
+    for (int i = 1; i <= max; i ++) {
+        Thread.Sleep (_Random.Next (10, 1000));
+        if (_BackgroundWorker.CancellationPending) {
+            return "Job aborted!";
+        }
+        AddMessage (String.Format ("Currently working on item {0} of {1}", i, max));
+        _BackgroundWorker.ReportProgress ((i * 100) / max);
+    }
+    return "Job is done.";
+}
+
+
+ private string DoSomething () {
+    int max = 10;
+    ConcurrentBag<string> messages = new ConcurrentBag<string> ();
+    Parallel.For (1, max + 1, i => {
+        Thread.Sleep (_Random.Next (10, 1000));
+        if (_BackgroundWorker.CancellationPending) {
+            messages.Add ("Job aborted!");
+            return;
+        }
+        AddMessage (String.Format ("Currently working on item {0} of {1}", i, max));
+        _BackgroundWorker.ReportProgress ((i * 100) / max);
+        messages.Add ("Job is done.");
+    });
+    return messages.First();
+}
+
+

@@ -1,0 +1,28 @@
+public static String shuffle (String text) {
+    char [] characters = text.toCharArray ();
+    for (int i = 0;
+    i < characters.length; i ++) {
+        int randomIndex = (int) (Math.random () * characters.length);
+        char temp = characters [i];
+        characters [i] = characters [randomIndex];
+        characters [randomIndex] = temp;
+    }
+    return new String (characters);
+}
+
+
+ public static String shuffle (String text) 
+{ 
+    char [] characters = text.toCharArray(); 
+    Random r = new Random(); 
+    for (int i = characters.length-1; i > 0; i--) 
+    { 
+        int j = r.nextInt(i+1); 
+        char temp = characters[i]; 
+        characters[i] = characters[j]; 
+        characters[j] = temp; 
+    } 
+    return new String(characters); 
+} 
+
+

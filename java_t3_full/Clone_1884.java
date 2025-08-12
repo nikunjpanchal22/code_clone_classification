@@ -1,0 +1,25 @@
+        public void actionPerformed (ActionEvent e) {
+            long start = System.currentTimeMillis ();
+            frame.remove (panel);
+            long end = System.currentTimeMillis ();
+            JPanel newPanel = new JPanel ();
+            newPanel.setBackground (Color.BLUE);
+            frame.add (newPanel);
+            frame.validate ();
+}
+
+
+            
+      public void actionPerformed (ActionEvent e) {
+            frame.remove (panel);
+            frame.setVisible (false);
+            JPanel newPanel = new JPanel ();
+            newPanel.setBackground (Color.BLUE);
+            frame.add (newPanel);
+            frame.setVisible (true);
+            long start = System.currentTimeMillis ();
+            frame.validate ();
+            long end = System.currentTimeMillis ();
+}
+
+

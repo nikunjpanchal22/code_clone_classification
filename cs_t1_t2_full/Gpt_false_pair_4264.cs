@@ -1,0 +1,20 @@
+public void add (object entry) {
+    node newNode = new node (entry);
+    if (headNode == null)
+        headNode = newNode;
+    if (tailNode != null)
+        tailNode.next = newNode;
+    tailNode = newNode;
+    ++ node_count;
+}
+
+
+public void add (object entry) {
+    node newNode = new node (entry);
+    if (headNode == null)
+        headNode = newNode;
+    if (tailNode != null)
+        newNode.next = tailNode;
+    tailNode = newNode;
+    ++ node_count;
+}

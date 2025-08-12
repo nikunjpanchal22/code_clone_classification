@@ -1,0 +1,17 @@
+def count_char(text) :
+	answer = {}
+	for char in text :
+		if char in answer :
+			answer [char] += 1
+		else :
+			answer [char] = 1
+	print (answer)
+
+
+ def count_char(text): 
+    answer = {} 
+    for i in range(len(text)): 
+        answer[text[i]] = text.count(text[i]) 
+    print(answer) 
+
+

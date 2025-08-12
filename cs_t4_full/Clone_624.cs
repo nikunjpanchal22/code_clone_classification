@@ -1,0 +1,44 @@
+private static int Encode (int value, byte [] buffer, int index) {
+    byte temp;
+    bool leading = true;
+    temp = (value > > 24) & 0xFF;
+    if (temp > 0) {
+        buffer [index ++] = temp;
+        leading = false;
+    }
+    temp = (value > > 16) & 0xFF;
+    if (temp > 0 || leading == false) {
+        buffer [index ++] = temp;
+        leading = false;
+    }
+    temp = (value > > 8) & 0xFF;
+    if (temp > 0 || leading == false) {
+        buffer [index ++] = temp;
+        leading = false;
+    }
+    temp = value & 0xFF;
+    buffer [index ++] = temp;
+    return index;
+}
+
+
+  private static int Encode (int value, byte [] buffer, int index) {
+        byte temp;
+        byte[] results = new byte[4];
+        bool leading = true;
+        results[0] = (byte)((value >> 24) & 0xFF);
+        results[1] = (byte)((value >> 16) & 0xFF);
+        results[2] = (byte)((value >> 8) & 0xFF);
+        results[3] = (byte)(value & 0xFF);
+        for(int i = 0; i < 4; i++)
+        {
+           temp = results[i];
+           if (temp > 0 || leading == false) {
+               buffer [index ++] = temp;
+               leading = false;
+           } 
+        } 
+        return index;
+}
+
+

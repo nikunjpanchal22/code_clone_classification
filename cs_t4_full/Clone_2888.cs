@@ -1,0 +1,57 @@
+public static bool SetBrowserEmulationVersion (BrowserEmulationVersion browserEmulationVersion) {
+    bool result;
+    result = false;
+    try {
+        RegistryKey key;
+        key = Registry.CurrentUser.OpenSubKey (BrowserEmulationKey, true);
+        if (key != null) {
+            string programName;
+            programName = Path.GetFileName (Environment.GetCommandLineArgs () [0]);
+            if (browserEmulationVersion != BrowserEmulationVersion.Default) {
+                key.SetValue (programName, (int) browserEmulationVersion, RegistryValueKind.DWord);
+            } else {
+                key.DeleteValue (programName, false);
+            }
+            result = true;
+        }
+    }
+    catch (SecurityException) {
+    }
+    catch (UnauthorizedAccessException) {
+    }
+    return result;
+}
+
+
+
+ 
+
+
+public static bool SetBrowserEmulationVersion (BrowserEmulationVersion browserEmulationVersion) 
+{
+    bool result = false;
+    try 
+    {
+        RegistryKey key = Registry.CurrentUser.OpenSubKey (BrowserEmulationKey, true);
+        result = key != null;
+        if (result) 
+        {
+            string programName = Path.GetFileName (Environment.GetCommandLineArgs() [0]);
+            result = false;
+            if (browserEmulationVersion != BrowserEmulationVersion.Default) 
+            {
+                key.SetValue (programName, (int) browserEmulationVersion, RegistryValueKind.DWord);
+                result = true;
+            } 
+            else 
+            {
+                key.DeleteValue (programName, false);
+                result = true;
+            }
+        }
+    }
+    catch { }
+    return result;
+}
+
+

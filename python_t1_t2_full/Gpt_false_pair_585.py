@@ -1,0 +1,12 @@
+def formatTime(self, record, datefmt = None) :
+	arrow_time = Arrow.fromtimestamp(record.created)
+	if datefmt :
+		arrow_time = arrow_time.format(datefmt)
+	return str(arrow_time)
+
+
+ def formatTime(self, record, datefmt = None) :
+    form_time = Arrow.fromtimestamp(record.created)
+    if datefmt :
+        form_time = form_time.format(datefmt)
+    return form_time.strftime('%Y-%m-%d %H:%M:%S')

@@ -1,0 +1,44 @@
+static Dictionary < string, object > NvcToDictionary (NameValueCollection nvc, bool handleMultipleValuesPerKey) {
+    var result = new Dictionary < string, object > ();
+    foreach (string key in nvc.Keys) {
+        if (handleMultipleValuesPerKey) {
+            string [] values = nvc.GetValues (key);
+            if (values.Length == 1) {
+                result.Add (key, values [0]);
+            } else {
+                result.Add (key, values);
+            }
+        } else {
+            result.Add (key, nvc [key]);
+        }
+    }
+    return result;
+}
+
+
+ static Dictionary<string, object> NameValColToDictionary(NameValueCollection nvc, bool handleMultipleValsPerKey)
+{
+    var output = new Dictionary<string, object>();
+
+    foreach (string kw in nvc.Keys) 
+    {
+        if (handleMultipleValsPerKey) 
+        {
+            string[] vals = nvc.GetValues(kw);
+            if (vals.Length == 1) 
+            {
+                output.Add(kw, vals[0]);
+            }
+            else 
+            {
+                output.Add(kw, vals);
+            }
+        }
+        else 
+        {
+            output.Add(kw, nvc[kw]);
+        }
+    }
+
+    return output;
+}

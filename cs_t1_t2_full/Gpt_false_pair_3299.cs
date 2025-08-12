@@ -1,0 +1,28 @@
+static void Main () {
+    int total = 0;
+    var vowels = new HashSet < char > {'a', 'e', 'i', 'o', 'u'};
+    Console.WriteLine ("Enter a Sentence");
+    string sentence = Console.ReadLine ().ToLower ();
+    for (int i = 0; i < sentence.Length; i ++) {
+        if (vowels.Contains (sentence [i])) {
+            total ++;
+        }
+    }
+    Console.WriteLine ("Your total number of vowels is: {0}", total);
+    Console.ReadLine ();
+}
+
+
+static void Main() {
+    int total = 0;
+    var chars = new List<char> {'a', 'e', 'i', 'o', 'u'};
+    Console.WriteLine("Enter a Sentence");
+    string sentence = Console.ReadLine().ToLower();
+    for (int i = 0; i < sentence.Length; i++) {
+        if (chars.Contains(sentence[i])) {
+            total++;
+        }
+    }
+    Console.WriteLine("Your total number of vowels is: {0}", total);
+    Console.ReadLine();
+}

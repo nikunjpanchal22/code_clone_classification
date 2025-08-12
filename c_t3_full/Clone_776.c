@@ -1,0 +1,31 @@
+int main () {
+    int Sum [12] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+    int Choice;
+    printf ("Pick Your Time's Table\n");
+    printf ("|2|3|4|5|6|7|8|9|10|11|12|\n");
+    printf ("===========================\n");
+    scanf ("%d", & Choice);
+    int i;
+    for (i = 0; i < 12; i++) {
+        printf ("%d X %d = %d\n", Choice, Sum [i], Choice * Sum [i]);
+    }
+    return 0;
+}
+
+
+
+int main() 
+{ 
+    int answer; 
+    printf("Please select your number: "); 
+    scanf("%d", &answer); 
+
+    int x;
+    for (x = 1; x <= 12; x++)  
+    { 
+        printf("%d X %d = %d\n", answer, x, answer * x); 
+    } 
+    return 0;
+}
+
+

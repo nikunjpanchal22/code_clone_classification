@@ -1,0 +1,46 @@
+int main (void) {
+    char str [41];
+    printf ("Enter a string (40 characters maximum): ");
+    fflush (stdout);
+    if (scanf ("%40s", str) == 1) {
+        int i;
+        printf ("The even string is:");
+        for (i = 0; str[i]; i++) {
+            if (i % 2 == 0) {
+                str[i / 2] = str[i];
+            }
+            else {
+                putchar (str [i]);
+            }
+        }
+        printf ("\n");
+        printf ("The odd string is:%.*s\n ", (i + 1) / 2, str);
+    }
+    return 0;
+}
+
+
+ int main (void) {
+    char str [41];
+    printf ("Enter a string (40 characters maximum): ");
+    fflush (stdout);
+    if (scanf ("%40s", str) == 1) {
+        int i, j;
+        printf ("The even string is:");
+        for (i = 0, j = 0; str[i]; i++) {
+            if (i % 2 == 0) {
+                str[j] = str[i]; 
+                j++;
+            }
+            else {
+                putchar (str [i]);
+            }
+        }
+        printf ("\n"); 
+        str[j] = '\0'; 
+        printf ("The odd string is:%s\n ", str);
+    }
+    return 0;
+}
+
+

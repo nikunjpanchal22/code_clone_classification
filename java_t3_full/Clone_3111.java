@@ -1,0 +1,23 @@
+public int hashCode () {
+    int hashCode = 1;
+    Iterator i = iterator ();
+    while (i.hasNext ()) {
+        Object obj = i.next ();
+        hashCode = 31 * hashCode + (obj == null ? 0 : obj.hashCode ());
+    }
+    return hashCode;
+}
+
+
+
+ 
+
+public int hashCode() {
+    int hashCode = 1;
+    for (Object obj : this.array) {
+        hashCode = 31 * hashCode + (obj == null ? 0 : obj.hashCode());
+    }
+    return hashCode;
+}
+
+

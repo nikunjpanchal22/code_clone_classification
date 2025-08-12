@@ -1,0 +1,32 @@
+int main (void) {
+    int a, b, m;
+    printf ("Please enter two integers between 1-12:\n");
+    scanf ("%d%d", & a, & b);
+    for (m = a + 1; b; b--, m++) {
+        printf (" ");
+        print_month (m);
+        putchar ('\n');
+    }
+}
+
+
+  int main (void) {
+    int a, b, m;
+    printf ("Please enter two integers between 1-12:\n");
+    scanf ("%d%d", & a, & b);
+    if ( a < b ) {
+    	for (m = a; m <= b; m++) {
+    		printf(" ");
+    		print_month(m);
+    		putchar('\n');
+    	}
+    } else {
+        for (m = b; m <= a; m++) {
+        	printf(" ");
+        	print_month(m);
+        	putchar('\n');
+        }
+    }
+}
+
+

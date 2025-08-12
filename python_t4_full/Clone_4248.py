@@ -1,0 +1,15 @@
+def is_member(x) :
+	a = [1, 5, 3, 9, 4, 100]
+	for i in a :
+		if i == x :
+			return "True"
+	return "False"
+
+
+
+def is_member(x):
+    a = set([1, 5, 3, 9, 4, 100])
+    return 'True' if x in a else 'False'
+
+
+

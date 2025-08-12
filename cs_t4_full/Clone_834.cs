@@ -1,0 +1,28 @@
+public static int Delta (int a, int b) {
+    int delta = 0;
+    if (a == b) {
+        return 0;
+    } else if (a < b) {
+        while (a < b) {
+            a ++;
+            delta ++;
+        }
+        return delta;
+    } else {
+        while (b < a) {
+            b ++;
+            delta ++;
+        }
+        return delta;
+    }
+}
+
+
+ public static int Delta(int a, int b){
+    int max = Math.max(a, b);
+    int min = Math.min(a, b);
+    int delta = max - min;
+    return delta;
+}
+
+

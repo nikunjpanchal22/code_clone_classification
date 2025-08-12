@@ -1,0 +1,55 @@
+int main (void) {
+    char text [] = "123 123 123 abcdef/456->ghijklm/789 123 123";
+    char *ptr = strtok (text, " ");
+    char *slash;
+    char *str1;
+    char *str2;
+    while (ptr) {
+        if (slash = strstr (ptr, "/")) {
+            *slash = '\0';
+            str1 = ptr;
+            ptr = ++slash;
+            break;
+        }
+        ptr = strtok (NULL, " ");
+    }
+    str2 = strtok (ptr, "><![CDATA[");
+    while (ptr) {
+        if (slash = strstr (ptr, "/")) {
+            *slash = '\0';
+            str2 = ptr;
+            break;
+        }
+        ptr = strtok (NULL, " ");
+    }
+    printf ("Found a: %s; and b: %s\n", str1, str2);
+    return 0;
+}
+
+
+ int main (void) {
+    char text [] = "123 123 123 abcdef/456->ghijklm/789 123 123";
+    char* ptr = strtok (text, " ");
+    char* slash;
+    char *str1;
+    char *str2;
+    size_t i = 0;
+    
+    for (i; i < strlen (text); i++) {
+         if (text [i] == '/' && text [i+1] != '/') {
+             text[i] = '\0';
+             str1 = &text[0];
+             break;
+         }
+         if (text [i] == '/' && text [i+1] == '/') {
+             text[i] = '\0';
+             str2 = &text[i+2];
+             break;
+         }
+    }
+
+    printf ("Found a: %s; and b: %s\n", str1, str2);
+    return 0;
+}
+
+

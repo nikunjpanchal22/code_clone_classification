@@ -1,0 +1,38 @@
+public virtual bool Equals (EntityBase other) {
+    if (other == null) {
+        return false;
+    }
+    if (ReferenceEquals (other, this)) {
+        return true;
+    }
+    var otherType = NHibernateProxyHelper.GetClassWithoutInitializingProxy (other);
+    var thisType = NHibernateProxyHelper.GetClassWithoutInitializingProxy (this);
+    if (! otherType.Equals (thisType)) {
+        return false;
+    }
+    bool otherIsTransient = Equals (other.Id, 0);
+    bool thisIsTransient = Equals (Id, 0);
+    if (otherIsTransient || thisIsTransient)
+        return false;
+    return other.Id.Equals (Id);
+}
+
+
+public virtual bool Equals (EntityBase otherEntity) {
+    if (otherEntity == null) {
+        return false;
+    }
+    if (ReferenceEquals (otherEntity, this)) {
+        return true;
+    }
+    var otherType = NHibernateProxyHelper.GetClassWithoutInitializingProxy (otherEntity);
+    var thisType = NHibernateProxyHelper.GetClassWithoutInitializingProxy (this);
+    if (! otherType.Equals (thisType)) {
+        return false;
+    }
+    bool isOtherTransient = Equals (otherEntity.Id, 0);
+    bool isThisTransient = Equals (Id, 0);
+    if (isOtherTransient || isThisTransient)
+        return false;
+    return otherEntity.Id.Equals (Id);
+}

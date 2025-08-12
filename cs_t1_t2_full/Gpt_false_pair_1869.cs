@@ -1,0 +1,89 @@
+private static String [] SplitCodeArray (String codeToExecute) {
+    List < String > items = new List < String > ();
+    Int32 parenAndbracketCount = 0;
+    String buffer = "";
+    foreach (Char c in codeToExecute.ToCharArray ()) {
+        if (c == '.') {
+            if (buffer.Length > 0) {
+                items.Add (buffer);
+                buffer = "";
+            }
+            continue;
+        } else if (c == '[') {
+            parenAndbracketCount ++;
+            if (buffer.Length > 0) {
+                items.Add (buffer);
+            }
+            buffer = c.ToString ();
+        } else if (c == ']' || c == ')') {
+            parenAndbracketCount --;
+            buffer += c;
+            if (buffer.Length > 0) {
+                items.Add (buffer);
+                buffer = "";
+            }
+        } else if (Char.IsWhiteSpace (c) || Char.IsControl (c)) {
+            if (parenAndbracketCount == 0) {
+                continue;
+            } else {
+                buffer += c;
+            }
+        } else if (c == '(') {
+            parenAndbracketCount ++;
+            buffer += c;
+        } else {
+            buffer += c;
+        }
+    }
+    if (buffer.Length > 0) {
+        items.Add (buffer);
+    }
+    return items.ToArray ();
+}
+
+
+ private static String [] SplitCodeArray (String codeToExecute) {
+        List < String > items = new List < String > ();
+        Int32 parenthesesCount = 0;
+        Int32 bracketsCount = 0;
+        String item = "";
+        foreach (Char c in codeToExecute.ToCharArray ()) {
+            if (c == '.' && parenthesesCount == 0 && bracketsCount == 0) {
+                if (item.Length > 0) {
+                    items.Add (item);
+                    item = "";
+                }
+                continue;
+            } else if (c == '[') {
+                parenthesesCount ++;
+                bracketsCount ++;
+                if (item.Length > 0) {
+                    items.Add (item);
+                }
+                item = c.ToString ();
+            } else if (c == ']' || c == ')') {
+                parenthesesCount --;
+                bracketsCount --;
+                item += c;
+                if (item.Length > 0) {
+                    items.Add (item);
+                    item = "";
+                }
+            } else if (Char.IsWhiteSpace (c) || Char.IsControl (c)) {
+                if (parenthesesCount == 0 && bracketsCount == 0) {
+                    continue;
+                } else {
+                    item += c;
+                }
+            } else if (c == '(') {
+                parenthesesCount ++;
+                item += c;
+            } else {
+                item += c;
+            }
+        }
+        if (item.Length > 0) {
+            items.Add (item);
+        }
+        return items.ToArray ();
+}

@@ -1,0 +1,55 @@
+public String getName (String value) {
+    StringBuilder buffer = new StringBuilder ();
+    String high, low;
+    if (value.length () < getPartDivider ()) {
+        high = "";
+        low = value;
+    } else {
+        int index = value.length () - getPartDivider ();
+        high = value.substring (0, index);
+        low = value.substring (index);
+    }
+    String highName = getHighProcessor ().getName (high);
+    String lowName = getLowProcessor ().getName (low);
+    if (! "".equals (highName)) {
+        buffer.append (highName);
+        buffer.append (SEPARATOR);
+        buffer.append (getToken ());
+        if (! "".equals (lowName)) {
+            buffer.append (SEPARATOR);
+        }
+    }
+    if (! "".equals (lowName)) {
+        buffer.append (lowName);
+    }
+    return buffer.toString ();
+}
+
+
+ 
+public String acquireName(String inputVal) {
+    StringBuilder result = new StringBuilder();
+    String first, last;
+    if (inputVal.length() < splitPoint()) {
+        first = "";
+        last = inputVal;
+    } else {
+        int indexPoint = inputVal.length() - splitPoint();
+        first = inputVal.substring(0, indexPoint);
+        last = inputVal.substring(indexPoint);
+    }
+    String firstName = firstProcessor().getName(first);
+    String lastName = lastProcessor().getName(last);
+    if (!firstName.isEmpty()) {
+        result.append(firstName).append(SPLITTER).append(getToken());
+        if (!lastName.isEmpty()) {
+            result.append(SPLITTER);
+        }
+    }
+    if (!lastName.isEmpty()) {
+        result.append(lastName);
+    }
+    return result.toString();
+}
+
+

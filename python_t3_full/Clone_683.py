@@ -1,0 +1,20 @@
+def permutations(string, step = 0) :
+	if step == len(string) :
+		print "".join(string)
+	for i in range(step, len(string)) :
+		string_copy = [character for character in string]
+		string_copy [step], string_copy [i] = string_copy [i], string_copy [step]
+		permutations(string_copy, step + 1)
+
+
+ def permutations(string, step = 0) :
+    if step == len(string) :
+        return ''.join(string)
+    permutation_list = []
+    for i in range(step, len(string)) :
+        string_copy = [char for char in string]
+        string_copy[step], string_copy[i] = string_copy[i], string_copy[step]
+        permutation_list.append(permutations(string_copy, step + 1))
+    return permutation_list
+
+

@@ -1,0 +1,23 @@
+public void ShotHit (Point shot, bool sunk) {
+    HitShots.AddLast (shot);
+    MissCount = 0;
+    EndPoints [1] = shot;
+    if (EndPoints [0] == null)
+        EndPoints [0] = shot;
+    if (sunk)
+        NullOutTarget ();
+}
+
+
+
+
+
+public void ShotHit(Point shot, bool sunk) {
+    HitShots.Add(shot);
+    MissCount = sunk? 0 : MissCount;
+    if(EndPoints[0] == null) EndPoints[0] = shot;
+    if(sunk) NullOutTarget();
+    else EndPoints[1] = shot;
+}
+
+

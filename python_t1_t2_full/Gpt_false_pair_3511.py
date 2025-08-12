@@ -1,0 +1,22 @@
+def a(** kwargs) :
+	if len(kwargs) ! = 1 :
+		raise ValueError("only pass a single keyword arg starting with 'bag' or 'basket'")
+	name, value = list(kwargs.items()) [0]
+	if name.startswith('bag') :
+		dist_list = ID ['bag']
+	else :
+		dist_list = ID ['basket']
+	dist_list.append(value)
+
+
+
+
+def a(** kwargs) :
+	if len(kwargs) ! = 1 :
+		raise ValueError("only pass a single keyword arg starting with 'shoe' or 'boot'")
+	name, value = list(kwargs.items()) [0]
+	if name.startswith('shoe') :
+		dist_list = ID ['shoe']
+	else :
+		dist_list = ID ['boot']
+	dist_list.append(value)

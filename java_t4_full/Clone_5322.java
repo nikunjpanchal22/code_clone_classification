@@ -1,0 +1,44 @@
+public static Comparable [] findCommonElements (Comparable [] [] collections) {
+    Comparable [] arr1 = collections [0];
+    Comparable [] arr2 = collections [1];
+    Comparable [] arr3 = collections [2];
+    if (arr1.length < arr2.length && arr1.length < arr3.length || arr2.length <= arr3.length) {
+        hashArray = arr1;
+        queryArray = ArrayUtils.addAll (arr2, arr3);
+    } else if (arr2.length < arr1.length && arr2.length < arr3.length || arr1.length <= arr3.length) {
+        hashArray = arr2;
+        queryArray = ArrayUtils.addAll (arr1, arr3);
+    } else if (arr3.length < arr1.length && arr3.length < arr2.length || arr1.length <= arr2.length) {
+        hashArray = arr3;
+        queryArray = ArrayUtils.addAll (arr1, arr2);
+    }
+    HashSet < Comparable > intersectionSet = new HashSet < > ();
+    HashSet < Comparable > arrayToHash = new HashSet < > ();
+    for (Comparable element : hashArray) {
+        arrayToHash.add (element);
+    }
+    for (Comparable element : queryArray) {
+        if (element != null) {
+            comparisons ++;
+        }
+        if (arrayToHash.contains (element)) {
+            intersectionSet.add (element);
+        }
+    }
+    return intersectionSet.toArray (new Comparable [0]);
+}
+
+
+
+
+public static Comparable[] findCommonElements(Comparable[][] collections) {
+    Comparable[] arr1 = collections[0];
+    Comparable[] arr2 = collections[1];
+    Comparable[] arr3 = collections[2];
+    List<Comparable> list = new ArrayList<>(Arrays.asList(arr1));
+    list.retainAll(new ArrayList<>(Arrays.asList(arr2)));
+    list.retainAll(new ArrayList<>(Arrays.asList(arr3)));
+    return list.toArray(new Comparable[0]);
+}
+
+

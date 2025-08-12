@@ -1,0 +1,23 @@
+def is_square(apositiveint) :
+	x = apositiveint // 2
+	seen = set([x])
+	while x * x != apositiveint :
+		x = (x + (apositiveint // x)) // 2
+		if x in seen : return False
+		seen.add(x)
+	return True
+
+
+  def is_square(apositiveint):
+    if apositiveint == 0 or apositiveint == 1:
+        return True
+    count,i=0,2
+    while i*i<=apositiveint:
+        if i*i == apositiveint:
+            count+=1
+        i+=1
+    if count!=0:
+        return True
+    return False
+
+

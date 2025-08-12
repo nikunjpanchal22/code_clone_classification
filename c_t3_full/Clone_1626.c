@@ -1,0 +1,78 @@
+int main (int argc, char *argv []) {
+    FILE *fp;
+    char filename [100];
+    char line [MAX_LINE_LEN];
+    char *p;
+    int array [MAX_NUM];
+    int index, count, max;
+    printf ("Please enter the file name: \n");
+    if (scanf ("%99s", filename) != 1) {
+        fatal ("Error in entering file.");
+    }
+    if ((fp = fopen (filename, "r")) == NULL) {
+        fatal ("Unable to open the file.");
+    }
+    while ((p = fgets (line, MAX_LINE_LEN, fp)) != NULL) {
+        p += strspn (p, " \t\n");
+        if (*p == '#' || *p == '\0') {
+            continue;
+        }
+        for (count = 0; *p != '\0';) {
+            if (isdigit ((unsigned char) *p)) {
+                array[count++] = strtol (p, &p, 10);
+                printf ("%d\n", array [count]);
+            }
+            else {
+                p += strcspn (p, " \t\n");
+            }
+            p += strspn (p, " \t\n");
+        }
+        index = get_max_occurrence_index (array, count);
+        max = get_number_of_occurrences (array, count, array[index]);
+        printf ("The element that occurs most often is %d\n", array [index]);
+        printf ("And it has occurred %d times\n", max);
+    }
+    fclose (fp);
+    return 0;
+}
+
+
+
+int main (int argc, char *argv[]) {
+    char fName[100], line[MAX_LINE_LEN], *p;
+    int arr[MAX_NUM];
+    int index, count, max;
+    FILE *fp;
+ 
+    printf ("Please enter the file name: \n");
+    if (scanf ("%99s", fName) != 1) {
+        fatal ("Error in entering file.");
+    }
+    if ((fp = fopen (fName, "r")) == NULL) {
+        fatal ("Unable to open the file.");
+    }
+    while ((fgets(line, MAX_LINE_LEN, fp)) != NULL) {
+        p = line;
+        if (*p == '#' || *p == '\0') {
+            continue;
+        }
+        for (count = 0; *p != '\0'; count++) {
+            if (isdigit ((unsigned char)*p)) {
+                arr[count] = (int)strtol(p, &p, 10);
+                printf ("%d\n", arr[count]);
+            }
+            else {
+               p += strcspn (p, " \t\n");
+            }
+            p += strspn (p, " \t\n");
+        }
+        index = get_max_occurrence_index (arr, count);
+        max = get_number_of_occurrences (arr, count, arr [index]);
+        printf ("The element that occurs most often is %d\n", arr[index]);
+        printf ("And it has occurred %d times\n", max);
+    }
+    fclose (fp);
+    return 0;
+}
+
+

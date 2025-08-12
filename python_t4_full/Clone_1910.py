@@ -1,0 +1,34 @@
+def char_first_index(s, c) :
+	if len_rec(s) == 0 :
+		return None
+	if s [0] == c :
+		return 0
+	answer = char_first_index(s [1 :], c)
+	if answer is not None :
+		return 1 + answer
+	else :
+		return answer
+
+
+ 
+def char_first_index(s, c):
+	curr_index = 0
+	for char in s:
+		if char == c:
+			return curr_index
+		curr_index += 1
+	return None
+
+ 
+def char_first_index(s, c) :
+	if len_rec(s) == 0 :
+		return None
+
+	index = None
+	for i in range(len(s)):
+		if s[i] == c:
+			index = i
+			break 
+	return index
+
+

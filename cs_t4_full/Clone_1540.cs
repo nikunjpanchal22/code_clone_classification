@@ -1,0 +1,71 @@
+public static int CountOccurrences (string original, string substring) {
+    if (string.IsNullOrEmpty (substring))
+        return 0;
+    if (substring.Length == 1)
+        return CountOccurrences (original, substring [0]);
+    if (string.IsNullOrEmpty (original) || substring.Length > original.Length)
+        return 0;
+    int substringCount = 0;
+    for (int charIndex = 0; charIndex < original.Length; charIndex ++) {
+        for (int subCharIndex = 0, secondaryCharIndex = charIndex; subCharIndex < substring.Length && secondaryCharIndex < original.Length; subCharIndex ++, secondaryCharIndex ++) {
+            if (substring [subCharIndex] != original [secondaryCharIndex])
+                goto continueOuter;
+        }
+        if (charIndex + substring.Length > original.Length)
+            break;
+        charIndex += substring.Length - 1;
+        substringCount ++;
+        continueOuter :;}
+    return substringCount;
+}
+
+
+	public static int CountOccurrences(string original, string substring) 
+{
+    if (string.IsNullOrEmpty(substring))
+        return 0;
+    if (substring.Length == 1)
+        return CountOccurrences(original, substring[0]);
+    if (string.IsNullOrEmpty(original) || substring.Length > original.Length)
+        return 0;
+
+    int substringCount = 0;
+    int charIndex = 0;
+    int secondaryCharIndex = 0;
+    int nextSecondaryCharIndex = 0;
+    bool matching = false;
+
+    if (original.Length <= substring.Length)
+        return 0;
+
+    while (charIndex < original.Length)
+    {
+        matching = true;
+        secondaryCharIndex = charIndex;
+        nextSecondaryCharIndex = charIndex + substring.Length;
+
+        if (nextSecondaryCharIndex > original.Length)
+            break;
+
+        for (int subCharIndex = 0; subCharIndex < substring.Length; subCharIndex++, secondaryCharIndex++)
+        {
+            if (substring[subCharIndex] != original[secondaryCharIndex])
+            {
+                matching = false;
+                break;
+            }
+        }
+
+        if (matching)
+        {
+            charIndex += substring.Length;
+            substringCount++;
+        }
+        else
+            charIndex++;
+    }
+
+    return substringCount;
+}
+
+

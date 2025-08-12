@@ -1,0 +1,28 @@
+public static ScrollViewer FindScrollViewer (FlowDocumentScrollViewer flowDocumentScrollViewer) {
+    if (VisualTreeHelper.GetChildrenCount (flowDocumentScrollViewer) == 0) {
+        return null;
+    }
+    DependencyObject firstChild = VisualTreeHelper.GetChild (flowDocumentScrollViewer, 0);
+    if (firstChild == null) {
+        return null;
+    }
+    Decorator border = VisualTreeHelper.GetChild (firstChild, 0) as Decorator;
+    if (border == null) {
+        return null;
+    }
+    return border.Child as ScrollViewer;
+}
+
+
+ ScrollViewer FindScrollViewer (FlowDocumentScrollViewer flowDocumentScrollViewer)
+{
+    DependencyObject child = VisualTreeHelper.GetChild(flowDocumentScrollViewer, 0);
+    Decorator borderChild = VisualTreeHelper.GetChild(child, 0) as Decorator;
+
+    if (borderChild == null || !(borderChild.Child is ScrollViewer)) {
+        return null;
+    }
+    return borderChild.Child as ScrollViewer;
+}
+
+

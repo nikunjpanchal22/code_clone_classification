@@ -1,0 +1,21 @@
+def run(cmd, timeout_sec):
+    proc = Popen(shlex.split(cmd), stdout=PIPE, stderr=PIPE)
+    timer = Timer(timeout_sec, proc.kill)
+    try:
+        timer.start()
+        stdout, stderr = proc.communicate()
+    finally:
+        timer.cancel()
+
+
+def run(cmd, timeout_sec):
+    timer = Timer(timeout_sec, proc.kill)
+    try:
+        timer.start()
+        stdout, stderr = subprocess.run(cmd, stdout=PIPE, stderr=PIPE).stdout, stderr
+    finally:
+        timer.cancel()
+
+
+
+

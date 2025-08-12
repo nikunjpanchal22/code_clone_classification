@@ -1,0 +1,35 @@
+private static void DownloadRemoteImageFile (string uri, string fileName) {
+    HttpWebRequest request = (HttpWebRequest) WebRequest.Create (uri);
+    HttpWebResponse response = (HttpWebResponse) request.GetResponse ();
+    if ((response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Moved || response.StatusCode == HttpStatusCode.Redirect) && response.ContentType.StartsWith ("image", StringComparison.OrdinalIgnoreCase)) {
+        using (Stream inputStream = response.GetResponseStream ())
+        using (Stream outputStream = File.OpenWrite (fileName))
+        {
+            byte [] buffer = new byte [4096];
+            int bytesRead;
+            do
+                {
+                    bytesRead = inputStream.Read (buffer, 0, buffer.Length);
+                    outputStream.Write (buffer, 0, bytesRead);
+                } while (bytesRead != 0);
+        }}
+}
+
+
+
+private static void DownloadRemoteImageFile (string url, string fileName) {
+    HttpWebRequest req = (HttpWebRequest) WebRequest.Create (url);
+    HttpWebResponse resp = (HttpWebResponse) req.GetResponse ();
+    if ((resp.StatusCode == HttpStatusCode.OK || resp.StatusCode == HttpStatusCode.Moved || resp.StatusCode == HttpStatusCode.Redirect) && resp.ContentType.StartsWith ("image", StringComparison.OrdinalIgnoreCase)) {
+        using (Stream inputStream = resp.GetResponseStream ())
+        using (Stream outputStream = File.OpenWrite (fileName))
+        {
+            byte [] buf = new byte [4096];
+            int bytesRead;
+            do
+                {
+                    bytesRead = inputStream.Read (buf, 0, buf.Length);
+                    outputStream.Write (buf, 0, bytesRead);
+                } while (bytesRead != 0);
+        }}
+}

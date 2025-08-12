@@ -1,0 +1,15 @@
+def numPens(n) :
+	if n < 5 :
+		return False
+	elif n == 5 or n == 8 or n == 24 :
+		return True
+	else :
+		return numPens(n - 5) or numPens(n - 8) or numPens(n - 24)
+
+
+  def numPens(n):
+    if n <= 0: 
+        return False
+    return n == 5 or n == 8 or n == 24 or numPens(n - 5) or numPens(n - 8) or numPens(n - 24) 
+
+

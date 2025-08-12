@@ -1,0 +1,19 @@
+def reader(fd) :
+	with os.fdopen(fd, bufsize = bufsize) as f :
+		while True :
+			data = f.read(bufsize)
+			if not data :
+				break
+			chomp(data)
+
+
+
+
+def reader(fd, bufsize) :
+	with os.fdopen(fd, bufsize = bufsize) as f :
+		while True :
+			data = f.read(bufsize)
+			if not data :
+				break
+			chop(data)
+

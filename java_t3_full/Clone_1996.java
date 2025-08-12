@@ -1,0 +1,33 @@
+public void put (K key, V val) {
+    while (currentSize >= maxSize) {
+        freeSpace ();
+    }
+    if (map.containsKey (key)) {
+        get (key);
+        return;
+    }
+    ListNode < K > ln = queue.add (key);
+    ValueHolder < K, V > rv = new ValueHolder < K, V > (val, ln);
+    map.put (key, rv);
+    currentSize ++;
+}
+
+
+ public void put (K key, V val) {
+    if (map.containsKey (key)) {
+        get (key);
+        return;
+    }
+    if (currentSize < maxSize) {
+        ListNode < K > ln = queue.add (key);
+        ValueHolder < K, V > rv = new ValueHolder < K, V > (val, ln);
+        map.put (key, rv);
+        currentSize++;
+    }
+    else {
+        freeSpace();
+        put(key, val);
+    }
+}
+
+

@@ -1,0 +1,30 @@
+def rep_str(s, x, y) :
+	result = ""
+	skip = False
+	if x in s :
+		for i in range(len(s)) :
+			if skip :
+				skip = False
+				continue
+			if s [i : i + 2] == x :
+				result += y
+				skip = True
+			else :
+				result += s [i : i + 1]
+		return result
+	else :
+		return s
+
+
+def rep_str(s, x, y) :
+    if not x in s:
+        return s
+    str_list = list(s)
+    for i in range(len(str_list)) :
+        if str_list[i : i + len(x)] == list(x) :
+            str_list[i] = y
+            for j in range(1, len(x)) :
+                str_list[i+j] = ""
+    return "".join(str_list)
+
+

@@ -1,0 +1,25 @@
+def check_all_conditions() :
+	x = check_size()
+	if x : return x
+	x = check_color()
+	if x : return x
+	x = check_tone()
+	if x : return x
+	x = check_flavor()
+	if x : return x
+	return None
+
+
+ def check_all_conditions() :
+	if check_size():
+		return check_size()
+	elif check_color():
+		return check_color()
+	elif check_tone():
+		return check_tone()
+	elif check_flavor():
+		return check_flavor()
+	else:
+		return None
+
+

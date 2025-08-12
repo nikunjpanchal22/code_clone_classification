@@ -1,0 +1,22 @@
+public PointF ? Intersect (LineSegment other) {
+    var p = line.Intersect (other.line);
+    if (p == null)
+        return null;
+    if (bindingRectangle.Contains (p.Value) && other.bindingRectangle.Contains (p.Value)) {
+        return p;
+    }
+    return null;
+}
+
+
+  public PointF? Intersect (LineSegment other)
+{
+    var p = line.Intersect(other.line);
+    if (p == null ||
+        !bindingRectangle.Contains(p.Value) ||
+        !other.bindingRectangle.Contains(p.Value))
+        return null;
+    return bindingRectangle.IntersectsWith(other.bindingRectangle) ? p : (PointF?)null;
+}
+
+

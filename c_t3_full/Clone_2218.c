@@ -1,0 +1,41 @@
+int main (void) {
+    const char *meida = "+IPD,0,206:GET /setWifi:home:0545881255 HTTP/1.1  Host: 192.168.4.1";
+    char writeable [] = "+IPD,0,206:GET /setWifi:home:0545881255 HTTP/1.1  Host: 192.168.4.1";
+    char *substr;
+    substr = substring_enclosed_const (meida, "GET /", " HTTP");
+    if (substr != NULL) {
+        puts (substr);
+        free (substr);
+    }
+    substr = substring_enclosed (writeable, "GET /", " HTTP");
+    if (substr != NULL)
+        puts (substr);
+    return 0;
+}
+
+
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+extern char* substring_enclosed_const(const char* s, const char* start, const char* end);
+extern char* substring_enclosed(char* s, const char* start, const char* end);
+
+int main()
+{
+    const char str[] = "+IPD,0,206:GET /setWifi:home:0545881255 HTTP/1.1  Host: 192.168.4.1";
+    char str2[] = "+IPD,0,206:GET /setWifi:home:0545881255 HTTP/1.1  Host: 192.168.4.1";
+    char* substr = substring_enclosed_const(str,"GET /"," HTTP");
+    if(substr) {
+        puts(substr);
+        free(substr);
+    }
+    substr = substring_enclosed(str2, "GET /", " HTTP");
+    if(substr) {
+        puts(substr);
+    }
+    return 0;
+}
+
+

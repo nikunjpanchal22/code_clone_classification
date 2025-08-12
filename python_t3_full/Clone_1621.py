@@ -1,0 +1,21 @@
+def __call__(self, * args, ** kwargs) :
+	if not hasattr(self, 'fn') :
+		self.fn = args [0]
+		return self
+	print ("In my decorator before call, with arg %s" % self.argument)
+	self.fn(* args, ** kwargs)
+	print ("In my decorator after call, with arg %s" % self.argument)
+
+
+ def __call__(self, *args, **kwargs):  
+    if not hasattr(self, 'fn'):  
+        self.fn = args[0]  
+        return self
+    new_args = list(args) 
+    new_args[0] = self.argument 
+    t_args=(tuple(new_args)) 
+    print ("In my decorator before call, with arg %s" % self.argument)
+    self.fn(*t_args, **kwargs)
+    print ("In my decorator after call, with arg %s" % self.argument)
+
+

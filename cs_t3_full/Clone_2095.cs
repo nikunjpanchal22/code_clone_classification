@@ -1,0 +1,25 @@
+protected override void OnCollectionChanged (NotifyCollectionChangedEventArgs e) {
+    if (suppressNotification)
+        return;
+    base.OnCollectionChanged (e);
+    if (CollectionChanged != null) {
+        CollectionChanged.Invoke (this, e);
+    }
+}
+
+
+
+
+
+protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+{
+    if (suppressNotification)
+        return;
+    else
+    {
+        base.OnCollectionChanged(e);
+        CollectionChanged?.Invoke(this, e);
+    }
+}
+
+

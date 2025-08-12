@@ -1,0 +1,58 @@
+internal static string GetIPAddress (HttpRequestBase request) {
+    string forwarded = request.Headers ["Forwarded"];
+    if (! String.IsNullOrEmpty (forwarded)) {
+        foreach (string segment in forwarded.Split (',') [0].Split (';')) {
+            string [] pair = segment.Trim ().Split ('=');
+            if (pair.Length == 2 && pair [0].Equals ("for", StringComparison.OrdinalIgnoreCase)) {
+                string ip = pair [1].Trim ('"');
+                int left = ip.IndexOf ('['), right = ip.IndexOf (']');
+                if (left == 0 && right > 0) {
+                    return ip.Substring (1, right - 1);
+                }
+                int colon = ip.IndexOf (':');
+                if (colon != - 1) {
+                    return ip.Substring (0, colon);
+                }
+                return ip;
+            }
+        }
+    }
+    string xForwardedFor = request.Headers ["X-Forwarded-For"];
+    if (! String.IsNullOrEmpty (xForwardedFor)) {
+        return xForwardedFor.Split (',') [0];
+    }
+    return request.UserHostAddress;
+}
+
+
+	internal static string GetIPAddress (HttpRequestBase request) {
+    string forwarded = request.Headers ["Forwarded"];
+    if (! String.IsNullOrEmpty (forwarded)) {
+        string[] segment = forwarded.Split (',') [0].Split (';');
+        foreach (var item in segment) {
+            string [] pair = item.Trim ().Split ('=');
+            if (pair.Length == 2 && pair [0].Equals ("for", StringComparison.OrdinalIgnoreCase)) {
+                string ip = pair [1].Trim ('"');
+                int left = ip.IndexOf ('[');
+                int right = ip.IndexOf (']');
+                if (left == 0 && right > 0) {
+                    ip = ip.Substring (1, right - 1);
+                    return ip;
+                }
+                int colonIndex = ip.IndexOf (':');
+                if (colonIndex > 0) {
+                    ip = ip.Substring (0, colonIndex);
+                    return ip;
+                }
+                return ip;
+            }
+        }
+    }
+    string xForwardedFor = request.Headers ["X-Forwarded-For"];
+    if (!String.IsNullOrEmpty (xForwardedFor)) {
+        return (xForwardedFor.Split (',') [0]);
+    }
+    return request.UserHostAddress;
+}
+
+

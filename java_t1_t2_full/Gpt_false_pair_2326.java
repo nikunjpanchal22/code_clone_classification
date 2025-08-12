@@ -1,0 +1,26 @@
+public void shuffle (String input) {
+    List < Character > characters = new ArrayList < Character > ();
+    for (char c : input.toCharArray ()) {
+        characters.add (c);
+    }
+    StringBuilder output = new StringBuilder (input.length ());
+    while (characters.size () != 0) {
+        int randPicker = (int) (Math.random () * characters.size ());
+        output.append (characters.remove (randPicker));
+    }
+    System.out.println (output.toString ());
+}
+
+
+  public void shuffle (String input) {
+    List < Character > characters = new ArrayList < Character > ();
+    for (char c : input.toCharArray ()) {
+        characters.add (c);
+    }
+    StringBuilder output = new StringBuilder (input.length ());
+    while (!characters.isEmpty ()) {
+        int randPicker = (int) (Math.random () * Math.max (1,characters.size ()-1));
+        output.append (characters.remove (randPicker));
+    }
+    System.out.println (output.toString ());
+}

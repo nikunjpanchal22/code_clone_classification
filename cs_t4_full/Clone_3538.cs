@@ -1,0 +1,26 @@
+public static DateTime GetStartDateTimeFromWeekNumberInYear (int year, uint weekOfYear) {
+    if (weekOfYear == 0 || weekOfYear > 54)
+        throw new ArgumentException ("Week number must be between 1 and 54! (Yes, 54... Year 2000 had Jan. 1 on a Saturday plus 53 Sundays.)");
+    DateTime firstDayInWeek = new DateTime (year, 1, 1);
+    if (weekOfYear == 1)
+        return firstDayInWeek;
+    do
+        {
+            firstDayInWeek = firstDayInWeek.AddDays (1);
+        } while (firstDayInWeek.DayOfWeek != DayOfWeek.Sunday);
+    if (weekOfYear == 2)
+        return firstDayInWeek;
+    return firstDayInWeek.AddDays ((weekOfYear - 2) * 7);
+}
+
+
+
+public static DateTime GetStartDateTimeFromWeekNumberInYear(int year, uint weekOfYear)
+{
+    DateTime jan1 = new DateTime(year, 1, 1);
+    int d = ((int)weekOfYear - 1) * 7 + ((int)DayOfWeek.Sunday - (int)jan1.DayOfWeek);
+    if (d < 0) d = 0;
+    return jan1.AddDays(d);
+}
+
+

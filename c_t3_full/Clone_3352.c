@@ -1,0 +1,27 @@
+int main (void) {
+    double **matrix = read_matrix (stdin);
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j)
+            printf (" %lf", matrix[i][j]);
+        printf ("\n");
+    }
+    return 0;
+}
+
+
+
+
+
+int main (void) {
+    double **matrix;
+    int m, n;
+    matrix = read_matrix (stdin, &m, &n);
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j)
+            printf (" %lf", matrix[i][j]);
+        printf ("\n");
+    }
+    return 0;
+}
+
+

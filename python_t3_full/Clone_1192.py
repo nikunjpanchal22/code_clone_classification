@@ -1,0 +1,46 @@
+def merge_sort(arr) :
+	if len(arr) < 2 :
+		return arr
+	half = len(arr) / / 2
+	left = merge_sort(arr [: half])
+	right = merge_sort(arr [half :])
+	out = []
+	li = ri = 0
+	while True :
+		if li > = len(left) :
+			out.extend(right [ri :])
+			break
+		if ri > = len(right) :
+			out.extend(left [li :])
+			break
+		if left [li] < right [ri] :
+			out.append(left [li])
+			li += 1
+		else :
+			out.append(right [ri])
+			ri += 1
+	return out
+
+
+ def merge_sort(arr) : 
+    if len(arr) < 2 :
+        return arr
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    merged = []
+    l = r = 0
+
+    while l != len(left) and r != len(right):
+        cur_left = left[l]
+        cur_right = right[r]
+        if cur_left < cur_right:
+            merged.append(cur_left)
+            l += 1
+        else:
+            merged.append(cur_right)
+            r += 1
+    merged += left[l:] + right[r:]
+    return merged
+
+

@@ -1,0 +1,30 @@
+def factors(n) :
+	f = 2
+	increments = itertools.chain([1, 2, 2], itertools.cycle([4, 2, 4, 2, 4, 6, 2, 6]))
+	for incr in increments :
+		if f * f > n :
+			break
+		while n % f == 0 :
+			yield f
+			n //= f
+		f += incr
+	if n > 1 :
+		yield n
+
+
+ def factors(n) :
+	if not isinstance(n, int) or n < 0:
+		raise ValueError('factors() arg not an int > 0')
+	factors = []
+	while n % 2 == 0:
+		factors.append(2)
+		n //= 2
+	f = 3
+	while n > 1 :
+		while n % f == 0:
+			factors.append(f)
+			n //= f
+		f += 2
+	return factors
+
+

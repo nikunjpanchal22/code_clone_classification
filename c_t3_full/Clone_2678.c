@@ -1,0 +1,53 @@
+int main () {
+    int link [2];
+    pid_t pid;
+    char foo [4096];
+    if (pipe (link) == -1)
+        die ("pipe");
+    if ((pid = fork ()) == -1)
+        die ("fork");
+    if (pid == 0) {
+        dup2 (link [1], STDOUT_FILENO);
+        close (link [0]);
+        close (link [1]);
+        execl ("/bin/ls", "ls", "-1", (char *) 0);
+        die ("execl");
+    }
+    else {
+        close (link [1]);
+        int nbytes = read (link[0], foo, sizeof (foo));
+        printf ("Output: (%.*s)\n", nbytes, foo);
+        wait (NULL);
+    }
+    return 0;
+}
+
+
+int main() {
+    int link[2];
+    pid_t pid;
+    char foo[4096];
+
+    if(pipe (link))
+        die("pipe");
+
+    if((pid = fork()) < 0)
+        die("fork");
+
+    else if(pid == 0) {
+        dup2(link[1], 1);
+        close(link[0]);
+        execl("/bin/ls", "ls", "-1", NULL);
+        die("execlp");
+    }
+
+    else {
+        close(link[1]);
+        int nbytes = read(link[0], foo, sizeof(foo));
+        printf("Output: (%.*s)\n", nbytes, foo);
+        wait(NULL);
+    }
+    return 0;
+}
+
+

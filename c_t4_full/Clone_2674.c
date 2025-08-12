@@ -1,0 +1,33 @@
+int main (void) {
+    char str [] = "This is abc test abc string";
+    char *in = str;
+    char *delim = "abc";
+    char *token;
+    do {
+        token = strstr (in, delim);
+        if (token)
+            *token = '\0';
+        printf ("%s\n", in);
+        in = token + strlen (delim);
+    }
+    while (token != NULL);
+    return 0;
+}
+
+
+
+
+
+#include <string.h>
+#include <stdio.h>
+int main (void) {
+    char str [] = "This is abc test abc string";
+    char *split = strtok(str, "abc");
+    while (split != NULL) {
+        printf("%s\n", split);
+        split = strtok(NULL, "abc");
+    }
+    return 0;
+}
+
+
